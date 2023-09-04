@@ -1,0 +1,17 @@
+debug/dialog.o
+debug/dialog_argon_protected_welding.o
+debug/dialog_double_pulse.o
+debug/dialog_hand.o
+debug/dialog_pulse.o
+debug/function.o
+debug/function_double_pulse.o
+debug/function_pulse.o
+debug/main.o
+debug/set_code.o
+debug/widget.o
+debug/moc_dialog.o
+debug/moc_dialog_argon_protected_welding.o
+debug/moc_dialog_double_pulse.o
+debug/moc_dialog_hand.o
+debug/moc_dialog_pulse.o
+debug/moc_widget.o

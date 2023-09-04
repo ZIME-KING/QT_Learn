@@ -1,14 +1,13 @@
 #include "widget.h"
 #include "ui_widget.h"
-
 #include "set_code.h"
-
 
 #include <QMessageBox>
 #include <QTime>
 #include <QTimer>
 #include <QDebug>
 
+unsigned char global_send_buf[66];
 
 char out_wire_flag=0x61;     //出丝
 char T2_T4_flag=0x61;       //t2t4
@@ -30,11 +29,7 @@ float offset_h=1.0;      //电感量偏移
 
 
 
-
 char direct_mode_flag =0x61;    //模式
-
-
-
 
 Widget::Widget(QWidget *parent)
     : QWidget(parent)
@@ -383,12 +378,22 @@ void Widget::onTimeOut()
 }
 void Widget::onTimeOut_1()
 {
-//   ui->textEdit_2->setMarkdown(send_data);
-//    ui->textEdit_2->setMarkdown(send_data);
-//    QString send_data=ui->textEdit_2->toPlainText();
-//    QByteArray bytes = send_data.toLatin1();  // QString转QByteArray方法2
 
-    Buttonfunction_f();
+    // 电流显示
+    dis_tmp = QString("%1 ").arg(pulse_mode[4].dis_current);
+    ui->label->setText(dis_tmp);
+    // 电压显示
+    dis_tmp = QString("%1 ").arg(pulse_mode[4].dis_voltage);
+    ui->label_10->setText(dis_tmp);
+    pulse_set_send_data(&pulse_mode[4]);
+    for (int i = 0; i < 66; i++)
+    {
+        a = (unsigned char)(pulse_mode[4].after_send_data[i]);
+        temp = QString("%1 ").arg(a, 0, 16);
+        Dis_data.append(temp);
+    }
+    ui->textEdit->setMarkdown(Dis_data);
+
 
     m_serial->write(&send_data[0],send_data.length());
     //m_serial->write(&bytes[0],bytes.length());

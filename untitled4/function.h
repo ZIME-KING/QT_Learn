@@ -24,8 +24,8 @@ typedef struct DC_Mode_Typedef
     int set_feeding_flag;       // 送丝标记
 
     // dis_x,表示面板显示的数据
-    int dis_current;            // 显示电流
-    int dis_voltage;            // 显示电压
+    float dis_current;            // 显示电流
+    float dis_voltage;            // 显示电压
 
     Updata_function fun; // 更新函数
 
@@ -33,6 +33,7 @@ typedef struct DC_Mode_Typedef
 
 extern DC_Mode_Typedef dc_mode[5];
 
+void direct_set_send_data(DC_Mode_Typedef *dc_mdoe);
 
 
 #endif // FUNCTION_H

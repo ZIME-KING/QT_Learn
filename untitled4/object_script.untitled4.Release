@@ -1,0 +1,17 @@
+release/dialog.o
+release/dialog_argon_protected_welding.o
+release/dialog_double_pulse.o
+release/dialog_hand.o
+release/dialog_pulse.o
+release/function.o
+release/function_double_pulse.o
+release/function_pulse.o
+release/main.o
+release/set_code.o
+release/widget.o
+release/moc_dialog.o
+release/moc_dialog_argon_protected_welding.o
+release/moc_dialog_double_pulse.o
+release/moc_dialog_hand.o
+release/moc_dialog_pulse.o
+release/moc_widget.o

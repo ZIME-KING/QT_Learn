@@ -17,6 +17,7 @@
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QSpinBox>
+#include <QtWidgets/QTextEdit>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -46,6 +47,7 @@ public:
     QDoubleSpinBox *doubleSpinBox_4;
     QLabel *label_3;
     QComboBox *comboBox_3;
+    QTextEdit *textEdit;
 
     void setupUi(QDialog *Dialog)
     {
@@ -54,7 +56,7 @@ public:
         Dialog->resize(718, 463);
         layoutWidget = new QWidget(Dialog);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(180, 130, 461, 251));
+        layoutWidget->setGeometry(QRect(150, 50, 461, 251));
         gridLayout = new QGridLayout(layoutWidget);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         gridLayout->setSizeConstraint(QLayout::SetMaximumSize);
@@ -208,7 +210,13 @@ public:
         comboBox_3->addItem(QString());
         comboBox_3->addItem(QString());
         comboBox_3->setObjectName(QString::fromUtf8("comboBox_3"));
-        comboBox_3->setGeometry(QRect(180, 80, 141, 22));
+        comboBox_3->setGeometry(QRect(0, 50, 141, 22));
+        textEdit = new QTextEdit(Dialog);
+        textEdit->setObjectName(QString::fromUtf8("textEdit"));
+        textEdit->setGeometry(QRect(20, 310, 601, 141));
+        QFont font1;
+        font1.setPointSize(16);
+        textEdit->setFont(font1);
 
         retranslateUi(Dialog);
 
@@ -243,6 +251,11 @@ public:
         comboBox_3->setItemText(3, QCoreApplication::translate("Dialog", "\346\227\240\346\260\224\350\215\257\350\212\257", nullptr));
         comboBox_3->setItemText(4, QCoreApplication::translate("Dialog", "\346\213\211\344\270\235\346\236\252", nullptr));
 
+        textEdit->setHtml(QCoreApplication::translate("Dialog", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Microsoft YaHei UI'; font-size:16pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt;\">send_data</span></p></body></html>", nullptr));
     } // retranslateUi
 
 };

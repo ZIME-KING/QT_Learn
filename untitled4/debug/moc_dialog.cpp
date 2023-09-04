@@ -105,7 +105,7 @@ void Dialog::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         (void)_t;
         switch (_id) {
         //case 0: _t->on_comboBox_activated((*reinterpret_cast< int(*)>(_a[1]))); break;
-       // case 1: _t->on_comboBox_2_activated((*reinterpret_cast< int(*)>(_a[1]))); break;
+        //case 1: _t->on_comboBox_2_activated((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 2: _t->on_doubleSpinBox_valueChanged((*reinterpret_cast< double(*)>(_a[1]))); break;
         case 3: _t->on_doubleSpinBox_2_valueChanged((*reinterpret_cast< double(*)>(_a[1]))); break;
         case 4: _t->on_doubleSpinBox_3_valueChanged((*reinterpret_cast< double(*)>(_a[1]))); break;

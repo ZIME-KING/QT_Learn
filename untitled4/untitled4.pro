@@ -12,19 +12,35 @@ CONFIG += console
 
 SOURCES += \
     dialog.cpp \
+    dialog_argon_protected_welding.cpp \
+    dialog_double_pulse.cpp \
+    dialog_hand.cpp \
+    dialog_pulse.cpp \
     function.cpp \
+    function_double_pulse.cpp \
+    function_pulse.cpp \
     main.cpp \
     set_code.cpp \
     widget.cpp
 
 HEADERS += \
     dialog.h \
+    dialog_argon_protected_welding.h \
+    dialog_double_pulse.h \
+    dialog_hand.h \
+    dialog_pulse.h \
     function.h \
+    function_double_pulse.h \
+    function_pulse.h \
     set_code.h \
     widget.h
 
 FORMS += \
     dialog.ui \
+    dialog_argon_protected_welding.ui \
+    dialog_double_pulse.ui \
+    dialog_hand.ui \
+    dialog_pulse.ui \
     widget.ui
 
 # Default rules for deployment.
