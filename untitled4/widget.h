@@ -78,7 +78,6 @@ private slots:
 
     void on_doubleSpinBox_4_valueChanged(double arg1);
 
-    void on_tabWidget_tabBarClicked(int index);
 
 private:
     void initActionsConnections();

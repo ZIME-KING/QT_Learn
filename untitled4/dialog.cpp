@@ -4,6 +4,14 @@
 #include "function.h"
 #include "set_code.h"
 
+
+#define max_speed_08     125          //10~175
+#define max_speed_09     100          //10~145
+#define max_speed_10     70           //10~128
+
+#include "set_code.h"
+
+
 int input_direct_mode_flag; // 模式标记
 float input_voltage;        // 电压
 float input_offest_voltage; // 电压偏移值
@@ -28,17 +36,37 @@ Dialog::Dialog(QWidget *parent) : QDialog(parent),
     connect(ui->comboBox_2, &QComboBox::textActivated, this, &Dialog::on_comboBox_2_textActivated);
     connect(ui->comboBox_3, &QComboBox::textActivated, this, &Dialog::on_comboBox_3_textActivated);
 
+    connect(ui->doubleSpinBox, &QDoubleSpinBox::valueChanged, this, &Dialog::on_doubleSpinBox_valueChanged);
     connect(ui->doubleSpinBox_2, &QDoubleSpinBox::valueChanged, this, &Dialog::on_doubleSpinBox_2_valueChanged);
     connect(ui->doubleSpinBox_3, &QDoubleSpinBox::valueChanged, this, &Dialog::on_doubleSpinBox_3_valueChanged);
 
     connect(ui->doubleSpinBox_3, &QDoubleSpinBox::valueChanged, this, &Dialog::on_doubleSpinBox_3_valueChanged);
     connect(ui->doubleSpinBox_4, &QDoubleSpinBox::valueChanged, this, &Dialog::on_doubleSpinBox_4_valueChanged);
     connect(ui->spinBox, &QSpinBox::valueChanged, this, &Dialog::on_spinBox_valueChanged);
+
+
+    set_data_init();
+
 }
 
 Dialog::~Dialog()
 {
     delete ui;
+}
+
+void Dialog::set_data_init(){
+
+on_doubleSpinBox_valueChanged(ui->doubleSpinBox->value());
+on_doubleSpinBox_2_valueChanged(ui->doubleSpinBox_2->value());
+on_doubleSpinBox_3_valueChanged(ui->doubleSpinBox_3->value());
+on_doubleSpinBox_4_valueChanged(ui->doubleSpinBox_4->value());
+
+on_spinBox_valueChanged(ui->spinBox->value());
+on_comboBox_textActivated(ui->comboBox->currentText());
+on_comboBox_2_textActivated(ui->comboBox_2->currentText());
+on_comboBox_3_textActivated(ui->comboBox_3->currentText());
+
+
 }
 
 void Dialog::updata_display()
@@ -50,7 +78,6 @@ void Dialog::updata_display()
 
     int a;
     int check_count = 0;
-
     // 0.8
     if (input_wire_diameter == 0x00)
     {
@@ -66,7 +93,6 @@ void Dialog::updata_display()
     {
         ui->doubleSpinBox_3->setMaximum(12.8);
     }
-
     // 手动模式
     if (input_direct_mode_flag == 0x02 || input_direct_mode_flag == 0x04)
     {
@@ -82,11 +108,9 @@ void Dialog::updata_display()
     // 碳钢 100%二氧化碳
     if (input_direct_mode_flag == 0x00)
     {
-        ///*
         dc_mode[0].set_direct_mode_flag = input_direct_mode_flag; // 模式标记
         // dc_mode[0].set_voltage=input_voltage;                       // 输出电压
         dc_mode[0].set_offest_voltage = input_offest_voltage * 10 + 50; // 输出电压偏移值
-
         // dc_mode[0].set_feeding_speed = input_feeding_speed * 10;   // 送丝速度
         dc_mode[0].set_inductance = input_inductance + 10;
         ;                                                   // 电感偏移值
@@ -97,31 +121,53 @@ void Dialog::updata_display()
         dc_mode[0].set_slow_feeding_speed = input_slow_feeding_speed * 10; // 缓慢送丝速度
         dc_mode[0].set_feeding_flag = input_feeding_flag;                      // 送丝标记
 
-        check_count = (int)(input_feeding_speed * 10 - 10);
-
+        check_count = (int)(input_feeding_speed * 10);
+        dc_mode[0].set_feeding_speed=check_count;
+        //设置电压电流参数
         switch (dc_mode[0].set_wire_diameter)
         {
-        case 0x00:
-            dc_mode[0].set_feeding_speed = data_08[check_count][0];                            // 送丝速度
-            dc_mode[0].set_voltage = data_08[check_count][1] + input_offest_voltage * 10 + 50; // 数据采集回来是微调-5模式下采集，这里加5恢复
-            dc_mode[0].set_unknown_data = data_08[check_count][2];
-            dc_mode[0].dis_current = data_08[check_count][3];      // 显示电流
+        case 0x00:  //0.8丝径
+            if(check_count>max_speed_08){
+                dc_mode[0].set_feeding_speed = max_speed_08;                            // 送丝速度
+            }
+            dc_mode[0].set_voltage = 0.9*check_count+89.33 + input_offest_voltage * 10 + 50; // 数据采集回来是微调-5模式下采集，这里加5恢复
+            if(dc_mode[0].set_voltage>270)  dc_mode[0].set_voltage=270;
+
+            dc_mode[0].set_unknown_data = 0.55*check_count-1.17;
+            if(dc_mode[0].set_unknown_data >70) dc_mode[0].set_unknown_data=70;
+
+            dc_mode[0].dis_current = int(1.38*check_count +28.07);     // 显示电流
+            //if(dc_mode[0].dis_current>270)
             dc_mode[0].dis_voltage = dc_mode[0].set_voltage * 0.1; // 显示电压
             break;
 
         case 0x01:
-            dc_mode[0].set_feeding_speed = data_09[check_count][0]; // 送丝速度
-            dc_mode[0].set_voltage = data_09[check_count][1] + input_offest_voltage * 10 + 50;
-            dc_mode[0].set_unknown_data = data_09[check_count][2];
-            dc_mode[0].dis_current = data_09[check_count][3];      // 显示电流
+            if(check_count>max_speed_09){
+                dc_mode[0].set_feeding_speed = max_speed_09;                            // 送丝速度
+            }
+            dc_mode[0].set_voltage = 1.13*check_count+89.28 + input_offest_voltage * 10 + 50; // 数据采集回来是微调-5模式下采集，这里加5恢复
+            if(dc_mode[0].set_voltage>270)  dc_mode[0].set_voltage=270;
+
+            dc_mode[0].set_unknown_data = 0.57*check_count-3.78;
+            if(dc_mode[0].set_unknown_data >70) dc_mode[0].set_unknown_data=70;
+
+            dc_mode[0].dis_current = int(1.64*check_count +32.98);     // 显示电流
+            //if(dc_mode[0].dis_current)
             dc_mode[0].dis_voltage = dc_mode[0].set_voltage * 0.1; // 显示电压
             break;
 
         case 0x02:
-            dc_mode[0].set_feeding_speed = data_10[check_count][0]; // 送丝速度
-            dc_mode[0].set_voltage = data_10[check_count][1] + input_offest_voltage * 10 + 50;
-            dc_mode[0].set_unknown_data = data_10[check_count][2];
-            dc_mode[0].dis_current = data_10[check_count][3];      // 显示电流
+            if(check_count>max_speed_10){
+                dc_mode[0].set_feeding_speed = max_speed_10;                            // 送丝速度
+            }
+            dc_mode[0].set_voltage = 1.14*check_count+119.63 + input_offest_voltage * 10 + 50; // 数据采集回来是微调-5模式下采集，这里加5恢复
+            if(dc_mode[0].set_voltage>270)  dc_mode[0].set_voltage=270;
+
+            dc_mode[0].set_unknown_data = 0.58*check_count-3.55;
+            if(dc_mode[0].set_unknown_data >70) dc_mode[0].set_unknown_data=70;
+
+            dc_mode[0].dis_current = int(1.86*check_count +33.37);     // 显示电流
+            //if(dc_mode[0].dis_current)
             dc_mode[0].dis_voltage = dc_mode[0].set_voltage * 0.1; // 显示电压
             break;
         }
@@ -142,11 +188,7 @@ void Dialog::updata_display()
             temp = QString("%1 ").arg(a, 0, 16);
             Dis_data.append(temp);
         }
-
-
         ui->textEdit->setMarkdown(Dis_data);
-
-        //*/
     }
     // 碳钢 25%二氧化碳
     else if (input_direct_mode_flag == 0x01)
@@ -165,34 +207,57 @@ void Dialog::updata_display()
         dc_mode[1].set_slow_feeding_speed = input_slow_feeding_speed * 10; // 缓慢送丝速度
         dc_mode[1].set_feeding_flag = input_feeding_flag;                      // 送丝标记
 
-        check_count = (int)(input_feeding_speed * 10 - 10);
+        check_count = (int)(input_feeding_speed * 10);
+        dc_mode[1].set_feeding_speed=check_count;
 
         switch (dc_mode[1].set_wire_diameter)
         {
-        case 0x00:
-            dc_mode[1].set_feeding_speed = data_08_mode1[check_count][0];                            // 送丝速度
-            dc_mode[1].set_voltage = data_08_mode1[check_count][1] + input_offest_voltage * 10 + 50; // 数据采集回来是微调-5模式下采集，这里加5恢复
-            dc_mode[1].set_unknown_data = data_08_mode1[check_count][2];
-            dc_mode[1].dis_current = data_08_mode1[check_count][3]; // 显示电流
-            dc_mode[1].dis_voltage = dc_mode[1].set_voltage * 0.1;  // 显示电压
+        case 0x00:  //0.8丝径
+            if(check_count>max_speed_08){
+                dc_mode[1].set_feeding_speed = max_speed_08;                            // 送丝速度
+            }
+            dc_mode[1].set_voltage = 0.53*check_count+89.57 + input_offest_voltage * 10 + 50; // 数据采集回来是微调-5模式下采集，这里加5恢复
+            if(dc_mode[1].set_voltage>270)  dc_mode[1].set_voltage=270;
+
+            dc_mode[1].set_unknown_data = 0.55*check_count-1.17;
+            if(dc_mode[1].set_unknown_data >70) dc_mode[1].set_unknown_data=70;
+
+            dc_mode[1].dis_current = int(1.38*check_count +28.07);     // 显示电流
+            //if(dc_mode[0].dis_current>270)
+            dc_mode[1].dis_voltage = dc_mode[1].set_voltage * 0.1; // 显示电压
             break;
 
         case 0x01:
-            dc_mode[1].set_feeding_speed = data_09_mode1[check_count][0]; // 送丝速度
-            dc_mode[1].set_voltage = data_09_mode1[check_count][1] + input_offest_voltage * 10 + 50;
-            dc_mode[1].set_unknown_data = data_09_mode1[check_count][2];
-            dc_mode[1].dis_current = data_09_mode1[check_count][3]; // 显示电流
-            dc_mode[1].dis_voltage = dc_mode[1].set_voltage * 0.1;  // 显示电压
+            if(check_count>max_speed_09){
+                dc_mode[1].set_feeding_speed = max_speed_09;                            // 送丝速度
+            }
+            dc_mode[1].set_voltage = 0.91*check_count+59.96 + input_offest_voltage * 10 + 50; // 数据采集回来是微调-5模式下采集，这里加5恢复
+            if(dc_mode[1].set_voltage>270)  dc_mode[1].set_voltage=270;
+
+            dc_mode[1].set_unknown_data = 0.57*check_count-3.78;
+            if(dc_mode[1].set_unknown_data >70) dc_mode[1].set_unknown_data=70;
+
+            dc_mode[1].dis_current = int(1.64*check_count +32.98);     // 显示电流
+            //if(dc_mode[0].dis_current)
+            dc_mode[1].dis_voltage = dc_mode[1].set_voltage * 0.1; // 显示电压
             break;
 
         case 0x02:
-            dc_mode[1].set_feeding_speed = data_10_mode1[check_count][0]; // 送丝速度
-            dc_mode[1].set_voltage = data_10_mode1[check_count][1] + input_offest_voltage * 10 + 50;
-            dc_mode[1].set_unknown_data = data_10_mode1[check_count][2];
-            dc_mode[1].dis_current = data_10_mode1[check_count][3]; // 显示电流
-            dc_mode[1].dis_voltage = dc_mode[1].set_voltage * 0.1;  // 显示电压
+            if(check_count>max_speed_10){
+                dc_mode[1].set_feeding_speed = max_speed_10;                            // 送丝速度
+            }
+            dc_mode[1].set_voltage = 0.92*check_count+82.21 + input_offest_voltage * 10 + 50; // 数据采集回来是微调-5模式下采集，这里加5恢复
+            if(dc_mode[1].set_voltage>270)  dc_mode[1].set_voltage=270;
+
+            dc_mode[1].set_unknown_data = 0.58*check_count-3.55;
+            if(dc_mode[1].set_unknown_data >70) dc_mode[1].set_unknown_data=70;
+
+            dc_mode[1].dis_current = int(1.86*check_count +33.37);     // 显示电流
+            //if(dc_mode[0].dis_current)
+            dc_mode[1].dis_voltage = dc_mode[1].set_voltage * 0.1; // 显示电压
             break;
         }
+
 
         // 电流显示
         dis_tmp = QString("%1 ").arg(dc_mode[1].dis_current);
@@ -226,7 +291,8 @@ void Dialog::updata_display()
         dc_mode[2].set_after_action_time = input_after_action_time * 10 - 1;   // 后吹时间
         dc_mode[2].set_slow_feeding_speed = input_slow_feeding_speed * 10; // 缓慢送丝速度
         dc_mode[2].set_feeding_flag = input_feeding_flag;                      // 送丝标记
-        check_count = (int)(input_feeding_speed * 10 - 10);
+        check_count = (int)(input_feeding_speed * 10);
+        dc_mode[2].set_feeding_speed=check_count;
 
         if (input_voltage > 27.0)
             input_voltage = 27;
@@ -236,30 +302,34 @@ void Dialog::updata_display()
 
         switch (dc_mode[2].set_wire_diameter)
         {
-        case 0x00:
-            dc_mode[2].set_feeding_speed = data_08_mode2[check_count][0]; // 送丝速度
-            // dc_mode [2].set_voltage=data_08_mode2[check_count][1]+input_offest_voltage*10+50;   //数据采集回来是微调-5模式下采集，这里加5恢复
-            dc_mode[2].set_unknown_data = data_08_mode2[check_count][2];
-            dc_mode[2].dis_current = data_08_mode2[check_count][3]; // 显示电流
-            dc_mode[2].dis_voltage = dc_mode[2].set_voltage * 0.1;  // 显示电压
+        case 0x00:  //0.8丝径
+            if(check_count>max_speed_08){
+                dc_mode[2].set_feeding_speed = max_speed_08;                            // 送丝速度
+            }
+            dc_mode[2].dis_current = int(1.38*check_count +28.07);     // 显示电流
+            //if(dc_mode[0].dis_current>270)
+            dc_mode[2].dis_voltage = dc_mode[2].set_voltage * 0.1; // 显示电压
             break;
 
         case 0x01:
-            dc_mode[2].set_feeding_speed = data_09_mode2[check_count][0]; // 送丝速度
-            // dc_mode [2].set_voltage=data_09_mode2[check_count][1]+input_offest_voltage*10 +50;
-            dc_mode[2].set_unknown_data = data_09_mode2[check_count][2];
-            dc_mode[2].dis_current = data_09_mode2[check_count][3]; // 显示电流
-            dc_mode[2].dis_voltage = dc_mode[2].set_voltage * 0.1;  // 显示电压
+            if(check_count>max_speed_09){
+                dc_mode[2].set_feeding_speed = max_speed_09;                            // 送丝速度
+            }
+            dc_mode[2].dis_current = int(1.64*check_count +32.98);     // 显示电流
+            //if(dc_mode[0].dis_current)
+            dc_mode[2].dis_voltage = dc_mode[2].set_voltage * 0.1; // 显示电压
             break;
 
         case 0x02:
-            dc_mode[2].set_feeding_speed = data_10_mode2[check_count][0]; // 送丝速度
-            // dc_mode [2].set_voltage=data_10_mode2[check_count][1]+input_offest_voltage*10 +50;
-            dc_mode[2].set_unknown_data = data_10_mode2[check_count][2];
-            dc_mode[2].dis_current = data_10_mode2[check_count][3]; // 显示电流
-            dc_mode[2].dis_voltage = dc_mode[2].set_voltage * 0.1;  // 显示电压
+            if(check_count>max_speed_10){
+                dc_mode[2].set_feeding_speed = max_speed_10;                            // 送丝速度
+            }
+            dc_mode[2].dis_current = int(1.86*check_count +33.37);     // 显示电流
+            //if(dc_mode[0].dis_current)
+            dc_mode[2].dis_voltage = dc_mode[2].set_voltage * 0.1; // 显示电压
             break;
         }
+
         // 电流显示
         dis_tmp = QString("%1 ").arg(dc_mode[2].dis_current);
         ui->label->setText(dis_tmp);
@@ -295,34 +365,57 @@ void Dialog::updata_display()
         dc_mode[3].set_slow_feeding_speed = input_slow_feeding_speed * 10; // 缓慢送丝速度
         dc_mode[3].set_feeding_flag = input_feeding_flag;                      // 送丝标记
 
-        check_count = (int)(input_feeding_speed * 10 - 10);
+        check_count = (int)(input_feeding_speed * 10);
+        dc_mode[3].set_feeding_speed=check_count;
 
         switch (dc_mode[3].set_wire_diameter)
         {
-        case 0x00:
-            dc_mode[3].set_feeding_speed = data_08_mode3[check_count][0];                            // 送丝速度
-            dc_mode[3].set_voltage = data_08_mode3[check_count][1] + input_offest_voltage * 10 + 50; // 数据采集回来是微调-5模式下采集，这里加5恢复
-            dc_mode[3].set_unknown_data = data_08_mode3[check_count][2];
-            dc_mode[3].dis_current = data_08_mode3[check_count][3]; // 显示电流
-            dc_mode[3].dis_voltage = dc_mode[3].set_voltage * 0.1;  // 显示电压
+        case 0x00:  //0.8丝径
+            if(check_count>max_speed_08){
+                dc_mode[3].set_feeding_speed = max_speed_08;                            // 送丝速度
+            }
+            dc_mode[3].set_voltage = 0.9*check_count+65.67 + input_offest_voltage * 10 + 50; // 数据采集回来是微调-5模式下采集，这里加5恢复
+            if(dc_mode[3].set_voltage>270)  dc_mode[1].set_voltage=270;
+
+            dc_mode[3].set_unknown_data = 0.55*check_count-1.17;
+            if(dc_mode[3].set_unknown_data >70) dc_mode[1].set_unknown_data=70;
+
+            dc_mode[3].dis_current = int(1.38*check_count +28.07);     // 显示电流
+            //if(dc_mode[0].dis_current>270)
+            dc_mode[3].dis_voltage = dc_mode[1].set_voltage * 0.1; // 显示电压
             break;
 
         case 0x01:
-            dc_mode[3].set_feeding_speed = data_09_mode3[check_count][0]; // 送丝速度
-            dc_mode[3].set_voltage = data_09_mode3[check_count][1] + input_offest_voltage * 10 + 50;
-            dc_mode[3].set_unknown_data = data_09_mode3[check_count][2];
-            dc_mode[3].dis_current = data_09_mode3[check_count][3]; // 显示电流
-            dc_mode[3].dis_voltage = dc_mode[3].set_voltage * 0.1;  // 显示电压
+            if(check_count>max_speed_09){
+                dc_mode[3].set_feeding_speed = max_speed_09;                            // 送丝速度
+            }
+            dc_mode[3].set_voltage = 1.13*check_count+69.85 + input_offest_voltage * 10 + 50; // 数据采集回来是微调-5模式下采集，这里加5恢复
+            if(dc_mode[3].set_voltage>270)  dc_mode[1].set_voltage=270;
+
+            dc_mode[3].set_unknown_data = 0.57*check_count-3.78;
+            if(dc_mode[3].set_unknown_data >70) dc_mode[1].set_unknown_data=70;
+
+            dc_mode[3].dis_current = int(1.64*check_count +32.98);     // 显示电流
+            //if(dc_mode[0].dis_current)
+            dc_mode[3].dis_voltage = dc_mode[3].set_voltage * 0.1; // 显示电压
             break;
 
         case 0x02:
-            dc_mode[3].set_feeding_speed = data_10_mode3[check_count][0]; // 送丝速度
-            dc_mode[3].set_voltage = data_10_mode3[check_count][1] + input_offest_voltage * 10 + 50;
-            dc_mode[3].set_unknown_data = data_10_mode3[check_count][2];
-            dc_mode[3].dis_current = data_10_mode3[check_count][3]; // 显示电流
-            dc_mode[3].dis_voltage = dc_mode[3].set_voltage * 0.1;  // 显示电压
+            if(check_count>max_speed_10){
+                dc_mode[3].set_feeding_speed = max_speed_10;                            // 送丝速度
+            }
+            dc_mode[3].set_voltage = 1.14*check_count+79.29 + input_offest_voltage * 10 + 50; // 数据采集回来是微调-5模式下采集，这里加5恢复
+            if(dc_mode[3].set_voltage>270)  dc_mode[3].set_voltage=270;
+
+            dc_mode[3].set_unknown_data = 0.58*check_count-3.55;
+            if(dc_mode[3].set_unknown_data >70) dc_mode[3].set_unknown_data=70;
+
+            dc_mode[3].dis_current = int(1.86*check_count +33.37);     // 显示电流
+            //if(dc_mode[0].dis_current)
+            dc_mode[3].dis_voltage = dc_mode[3].set_voltage * 0.1; // 显示电压
             break;
         }
+
 
         // 电流显示
         dis_tmp = QString("%1 ").arg(dc_mode[3].dis_current);
@@ -356,8 +449,8 @@ void Dialog::updata_display()
         dc_mode[4].set_after_action_time = input_after_action_time * 10 - 1;   // 后吹时间
         dc_mode[4].set_slow_feeding_speed = input_slow_feeding_speed * 10; // 缓慢送丝速度
         dc_mode[4].set_feeding_flag = input_feeding_flag;                      // 送丝标记
-        check_count = (int)(input_feeding_speed * 10 - 10);
-
+        check_count = (int)(input_feeding_speed * 10);
+        dc_mode[4].set_feeding_speed=check_count;
         if (input_voltage > 27.0)
             input_voltage = 27;
         if (input_voltage < 10.0)
@@ -504,16 +597,12 @@ void Dialog::on_comboBox_2_textActivated(const QString &arg1)
 void Dialog::on_comboBox_3_textActivated(const QString &arg1)
 {
     QString dis = arg1;
-    // QDebug("%s",dis);
-    // ui->tabWidget->setCurrentIndex(0);
     if (!dis.compare(("碳钢100%二氧化碳")))
     {
-        // ui->stackedWidget->setCurrentWidget(ui->page_1);
         input_direct_mode_flag = 0x00;
     }
     else if (!dis.compare(("碳钢25%二氧化碳")))
     {
-        // ui->stackedWidget->setCurrentWidget(ui->page_2);
         input_direct_mode_flag = 0x01;
     }
     else if (!dis.compare(("恒压")))

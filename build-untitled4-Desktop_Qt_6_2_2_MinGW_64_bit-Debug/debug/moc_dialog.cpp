@@ -22,39 +22,37 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Dialog_t {
-    const uint offsetsAndSize[28];
-    char stringdata0[297];
+    const uint offsetsAndSize[26];
+    char stringdata0[290];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(offsetof(qt_meta_stringdata_Dialog_t, stringdata0) + ofs), len 
 static const qt_meta_stringdata_Dialog_t qt_meta_stringdata_Dialog = {
     {
 QT_MOC_LITERAL(0, 6), // "Dialog"
-QT_MOC_LITERAL(7, 21), // "on_comboBox_activated"
-QT_MOC_LITERAL(29, 0), // ""
-QT_MOC_LITERAL(30, 5), // "index"
-QT_MOC_LITERAL(36, 23), // "on_comboBox_2_activated"
-QT_MOC_LITERAL(60, 29), // "on_doubleSpinBox_valueChanged"
-QT_MOC_LITERAL(90, 4), // "arg1"
-QT_MOC_LITERAL(95, 31), // "on_doubleSpinBox_2_valueChanged"
-QT_MOC_LITERAL(127, 31), // "on_doubleSpinBox_3_valueChanged"
-QT_MOC_LITERAL(159, 31), // "on_doubleSpinBox_4_valueChanged"
-QT_MOC_LITERAL(191, 23), // "on_spinBox_valueChanged"
-QT_MOC_LITERAL(215, 25), // "on_comboBox_textActivated"
-QT_MOC_LITERAL(241, 27), // "on_comboBox_2_textActivated"
-QT_MOC_LITERAL(269, 27) // "on_comboBox_3_textActivated"
+QT_MOC_LITERAL(7, 29), // "on_doubleSpinBox_valueChanged"
+QT_MOC_LITERAL(37, 0), // ""
+QT_MOC_LITERAL(38, 4), // "arg1"
+QT_MOC_LITERAL(43, 31), // "on_doubleSpinBox_2_valueChanged"
+QT_MOC_LITERAL(75, 31), // "on_doubleSpinBox_3_valueChanged"
+QT_MOC_LITERAL(107, 31), // "on_doubleSpinBox_4_valueChanged"
+QT_MOC_LITERAL(139, 23), // "on_spinBox_valueChanged"
+QT_MOC_LITERAL(163, 25), // "on_comboBox_textActivated"
+QT_MOC_LITERAL(189, 27), // "on_comboBox_2_textActivated"
+QT_MOC_LITERAL(217, 27), // "on_comboBox_3_textActivated"
+QT_MOC_LITERAL(245, 21), // "on_pushButton_pressed"
+QT_MOC_LITERAL(267, 22) // "on_pushButton_released"
 
     },
-    "Dialog\0on_comboBox_activated\0\0index\0"
-    "on_comboBox_2_activated\0"
-    "on_doubleSpinBox_valueChanged\0arg1\0"
-    "on_doubleSpinBox_2_valueChanged\0"
+    "Dialog\0on_doubleSpinBox_valueChanged\0"
+    "\0arg1\0on_doubleSpinBox_2_valueChanged\0"
     "on_doubleSpinBox_3_valueChanged\0"
     "on_doubleSpinBox_4_valueChanged\0"
     "on_spinBox_valueChanged\0"
     "on_comboBox_textActivated\0"
     "on_comboBox_2_textActivated\0"
-    "on_comboBox_3_textActivated"
+    "on_comboBox_3_textActivated\0"
+    "on_pushButton_pressed\0on_pushButton_released"
 };
 #undef QT_MOC_LITERAL
 
@@ -75,25 +73,25 @@ static const uint qt_meta_data_Dialog[] = {
        1,    1,   74,    2, 0x08,    1 /* Private */,
        4,    1,   77,    2, 0x08,    3 /* Private */,
        5,    1,   80,    2, 0x08,    5 /* Private */,
-       7,    1,   83,    2, 0x08,    7 /* Private */,
-       8,    1,   86,    2, 0x08,    9 /* Private */,
-       9,    1,   89,    2, 0x08,   11 /* Private */,
-      10,    1,   92,    2, 0x08,   13 /* Private */,
-      11,    1,   95,    2, 0x08,   15 /* Private */,
-      12,    1,   98,    2, 0x08,   17 /* Private */,
-      13,    1,  101,    2, 0x08,   19 /* Private */,
+       6,    1,   83,    2, 0x08,    7 /* Private */,
+       7,    1,   86,    2, 0x08,    9 /* Private */,
+       8,    1,   89,    2, 0x08,   11 /* Private */,
+       9,    1,   92,    2, 0x08,   13 /* Private */,
+      10,    1,   95,    2, 0x08,   15 /* Private */,
+      11,    0,   98,    2, 0x08,   17 /* Private */,
+      12,    0,   99,    2, 0x08,   18 /* Private */,
 
  // slots: parameters
+    QMetaType::Void, QMetaType::Double,    3,
+    QMetaType::Void, QMetaType::Double,    3,
+    QMetaType::Void, QMetaType::Double,    3,
+    QMetaType::Void, QMetaType::Double,    3,
     QMetaType::Void, QMetaType::Int,    3,
-    QMetaType::Void, QMetaType::Int,    3,
-    QMetaType::Void, QMetaType::Double,    6,
-    QMetaType::Void, QMetaType::Double,    6,
-    QMetaType::Void, QMetaType::Double,    6,
-    QMetaType::Void, QMetaType::Double,    6,
-    QMetaType::Void, QMetaType::Int,    6,
-    QMetaType::Void, QMetaType::QString,    6,
-    QMetaType::Void, QMetaType::QString,    6,
-    QMetaType::Void, QMetaType::QString,    6,
+    QMetaType::Void, QMetaType::QString,    3,
+    QMetaType::Void, QMetaType::QString,    3,
+    QMetaType::Void, QMetaType::QString,    3,
+    QMetaType::Void,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -104,16 +102,16 @@ void Dialog::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         auto *_t = static_cast<Dialog *>(_o);
         (void)_t;
         switch (_id) {
-        //case 0: _t->on_comboBox_activated((*reinterpret_cast< int(*)>(_a[1]))); break;
-        //case 1: _t->on_comboBox_2_activated((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 2: _t->on_doubleSpinBox_valueChanged((*reinterpret_cast< double(*)>(_a[1]))); break;
-        case 3: _t->on_doubleSpinBox_2_valueChanged((*reinterpret_cast< double(*)>(_a[1]))); break;
-        case 4: _t->on_doubleSpinBox_3_valueChanged((*reinterpret_cast< double(*)>(_a[1]))); break;
-        case 5: _t->on_doubleSpinBox_4_valueChanged((*reinterpret_cast< double(*)>(_a[1]))); break;
-        case 6: _t->on_spinBox_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 7: _t->on_comboBox_textActivated((*reinterpret_cast< const QString(*)>(_a[1]))); break;
-        case 8: _t->on_comboBox_2_textActivated((*reinterpret_cast< const QString(*)>(_a[1]))); break;
-        case 9: _t->on_comboBox_3_textActivated((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 0: _t->on_doubleSpinBox_valueChanged((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 1: _t->on_doubleSpinBox_2_valueChanged((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 2: _t->on_doubleSpinBox_3_valueChanged((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 3: _t->on_doubleSpinBox_4_valueChanged((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 4: _t->on_spinBox_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 5: _t->on_comboBox_textActivated((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 6: _t->on_comboBox_2_textActivated((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 7: _t->on_comboBox_3_textActivated((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 8: _t->on_pushButton_pressed(); break;
+        case 9: _t->on_pushButton_released(); break;
         default: ;
         }
     }
@@ -127,7 +125,7 @@ const QMetaObject Dialog::staticMetaObject = { {
     nullptr,
 qt_incomplete_metaTypeArray<qt_meta_stringdata_Dialog_t
 , QtPrivate::TypeAndForceComplete<Dialog, std::true_type>
-, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const QString &, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const QString &, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const QString &, std::false_type>
+, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const QString &, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const QString &, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const QString &, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>
 
 
 >,

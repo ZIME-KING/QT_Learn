@@ -16,9 +16,6 @@ public:
     ~Dialog();
 
 private slots:
-    void on_comboBox_activated(int index);
-
-    void on_comboBox_2_activated(int index);
 
     void on_doubleSpinBox_valueChanged(double arg1);
 
@@ -36,7 +33,6 @@ private slots:
 
     void on_comboBox_3_textActivated(const QString &arg1);
 
-    void on_pushButton_clicked();
 
     void on_pushButton_pressed();
 
@@ -44,6 +40,7 @@ private slots:
 
 private:
     void updata_display();
+    void set_data_init();
 
     Ui::Dialog *ui;
 };
