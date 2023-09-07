@@ -8,6 +8,13 @@
 #include <QTime>
 #include <QTimer>
 
+#include "dialog.h"
+#include "dialog_pulse.h"
+#include "dialog_double_pulse.h"
+#include "dialog_hand.h"
+#include "dialog_argon_protected_welding.h"
+//#include "form.h"
+
 
 
 QT_BEGIN_NAMESPACE
@@ -71,6 +78,8 @@ private slots:
 
     void on_doubleSpinBox_4_valueChanged(double arg1);
 
+    void on_tabWidget_tabBarClicked(int index);
+
 private:
     void initActionsConnections();
 //private slots:
@@ -80,6 +89,9 @@ private:
 
 private:
     Ui::Widget *ui;
+
+
+
 private:
     QSerialPort *m_serial = nullptr;
     QSerialPort *m_serial_2 = nullptr;
@@ -87,5 +99,11 @@ private:
     QSerialPort *m_serial_4 = nullptr;
 
     QTimer *tim,*tim1;
+
+    Dialog_pulse* ui_2;
+    Dialog_double_pulse* ui_3;
+    //Form* ui_4;
+
+
 };
 #endif // WIDGET_H

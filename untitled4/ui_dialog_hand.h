@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'dialog_hand.ui'
 **
-** Created by: Qt User Interface Compiler version 6.2.2
+** Created by: Qt User Interface Compiler version 6.2.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -32,7 +32,7 @@ public:
     QLabel *label_4;
     QTextEdit *textEdit;
     QLabel *label_8;
-    QWidget *widget;
+    QWidget *layoutWidget1;
     QGridLayout *gridLayout;
     QLabel *label_5;
     QSpinBox *spinBox_3;
@@ -45,10 +45,10 @@ public:
     {
         if (Dialog_hand->objectName().isEmpty())
             Dialog_hand->setObjectName(QString::fromUtf8("Dialog_hand"));
-        Dialog_hand->resize(583, 467);
+        Dialog_hand->resize(480, 480);
         layoutWidget = new QWidget(Dialog_hand);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(80, 80, 261, 61));
+        layoutWidget->setGeometry(QRect(10, 110, 261, 61));
         gridLayout_2 = new QGridLayout(layoutWidget);
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
         gridLayout_2->setContentsMargins(0, 0, 0, 0);
@@ -81,49 +81,49 @@ public:
 
         textEdit = new QTextEdit(Dialog_hand);
         textEdit->setObjectName(QString::fromUtf8("textEdit"));
-        textEdit->setGeometry(QRect(80, 230, 451, 181));
+        textEdit->setGeometry(QRect(10, 260, 451, 181));
         QFont font;
         font.setPointSize(16);
         textEdit->setFont(font);
         label_8 = new QLabel(Dialog_hand);
         label_8->setObjectName(QString::fromUtf8("label_8"));
-        label_8->setGeometry(QRect(120, 30, 82, 32));
-        widget = new QWidget(Dialog_hand);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(381, 80, 151, 131));
-        gridLayout = new QGridLayout(widget);
+        label_8->setGeometry(QRect(90, 40, 82, 32));
+        layoutWidget1 = new QWidget(Dialog_hand);
+        layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
+        layoutWidget1->setGeometry(QRect(311, 110, 151, 131));
+        gridLayout = new QGridLayout(layoutWidget1);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         gridLayout->setContentsMargins(0, 0, 0, 0);
-        label_5 = new QLabel(widget);
+        label_5 = new QLabel(layoutWidget1);
         label_5->setObjectName(QString::fromUtf8("label_5"));
 
         gridLayout->addWidget(label_5, 0, 0, 1, 1);
 
-        spinBox_3 = new QSpinBox(widget);
+        spinBox_3 = new QSpinBox(layoutWidget1);
         spinBox_3->setObjectName(QString::fromUtf8("spinBox_3"));
         spinBox_3->setMinimum(0);
         spinBox_3->setMaximum(10);
 
         gridLayout->addWidget(spinBox_3, 0, 1, 1, 1);
 
-        label_6 = new QLabel(widget);
+        label_6 = new QLabel(layoutWidget1);
         label_6->setObjectName(QString::fromUtf8("label_6"));
 
         gridLayout->addWidget(label_6, 1, 0, 1, 1);
 
-        spinBox_4 = new QSpinBox(widget);
+        spinBox_4 = new QSpinBox(layoutWidget1);
         spinBox_4->setObjectName(QString::fromUtf8("spinBox_4"));
         spinBox_4->setMinimum(0);
         spinBox_4->setMaximum(10);
 
         gridLayout->addWidget(spinBox_4, 1, 1, 1, 1);
 
-        label_7 = new QLabel(widget);
+        label_7 = new QLabel(layoutWidget1);
         label_7->setObjectName(QString::fromUtf8("label_7"));
 
         gridLayout->addWidget(label_7, 2, 0, 1, 1);
 
-        spinBox_5 = new QSpinBox(widget);
+        spinBox_5 = new QSpinBox(layoutWidget1);
         spinBox_5->setObjectName(QString::fromUtf8("spinBox_5"));
         spinBox_5->setMinimum(0);
         spinBox_5->setMaximum(1);

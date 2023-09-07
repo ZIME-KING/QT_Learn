@@ -36,6 +36,12 @@ private slots:
 
     void on_comboBox_3_textActivated(const QString &arg1);
 
+    void on_pushButton_clicked();
+
+    void on_pushButton_pressed();
+
+    void on_pushButton_released();
+
 private:
     void updata_display();
 

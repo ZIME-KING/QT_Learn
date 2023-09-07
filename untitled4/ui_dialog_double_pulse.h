@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'dialog_double_pulse.ui'
 **
-** Created by: Qt User Interface Compiler version 6.2.2
+** Created by: Qt User Interface Compiler version 6.2.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -55,7 +55,7 @@ public:
     {
         if (Dialog_double_pulse->objectName().isEmpty())
             Dialog_double_pulse->setObjectName(QString::fromUtf8("Dialog_double_pulse"));
-        Dialog_double_pulse->resize(627, 464);
+        Dialog_double_pulse->resize(480, 480);
         comboBox_3 = new QComboBox(Dialog_double_pulse);
         comboBox_3->addItem(QString());
         comboBox_3->addItem(QString());
@@ -64,19 +64,20 @@ public:
         comboBox_3->addItem(QString());
         comboBox_3->addItem(QString());
         comboBox_3->setObjectName(QString::fromUtf8("comboBox_3"));
-        comboBox_3->setGeometry(QRect(140, 10, 331, 21));
+        comboBox_3->setGeometry(QRect(10, 20, 331, 21));
         comboBox_3->setEditable(false);
         comboBox_3->setDuplicatesEnabled(false);
         comboBox_3->setFrame(true);
         textEdit = new QTextEdit(Dialog_double_pulse);
         textEdit->setObjectName(QString::fromUtf8("textEdit"));
-        textEdit->setGeometry(QRect(130, 310, 481, 131));
+        textEdit->setGeometry(QRect(0, 320, 481, 131));
         QFont font;
+        font.setFamilies({QString::fromUtf8("Courier New")});
         font.setPointSize(16);
         textEdit->setFont(font);
         layoutWidget = new QWidget(Dialog_double_pulse);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(130, 50, 481, 241));
+        layoutWidget->setGeometry(QRect(0, 60, 481, 241));
         gridLayout = new QGridLayout(layoutWidget);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         gridLayout->setSizeConstraint(QLayout::SetMaximumSize);
@@ -238,7 +239,7 @@ public:
 
         label_3 = new QLabel(Dialog_double_pulse);
         label_3->setObjectName(QString::fromUtf8("label_3"));
-        label_3->setGeometry(QRect(30, 50, 61, 31));
+        label_3->setGeometry(QRect(390, 20, 61, 31));
 
         retranslateUi(Dialog_double_pulse);
 
@@ -258,8 +259,8 @@ public:
         textEdit->setHtml(QCoreApplication::translate("Dialog_double_pulse", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Microsoft YaHei UI'; font-size:16pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt;\">send_data</span></p></body></html>", nullptr));
+"</style></head><body style=\" font-family:'Courier New'; font-size:16pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Microsoft YaHei UI'; font-size:9pt;\">send_data</span></p></body></html>", nullptr));
         label_5->setText(QCoreApplication::translate("Dialog_double_pulse", "\347\224\265\345\216\213 V", nullptr));
         label_8->setText(QCoreApplication::translate("Dialog_double_pulse", "2T/4T", nullptr));
         label_6->setText(QCoreApplication::translate("Dialog_double_pulse", "\344\270\235\345\276\204", nullptr));

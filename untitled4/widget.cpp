@@ -1,7 +1,17 @@
-#include "widget.h"
 #include "ui_widget.h"
 #include "set_code.h"
 
+
+//#include "form.h"
+
+#include "widget.h"
+#include "dialog.h"
+#include "dialog_pulse.h"
+#include "dialog_double_pulse.h"
+#include "dialog_hand.h"
+#include "dialog_argon_protected_welding.h"
+
+#include <QApplication>
 #include <QMessageBox>
 #include <QTime>
 #include <QTimer>
@@ -25,10 +35,6 @@ float low_speed=1.0;     //慢送丝
 float after_time=1.0;    //后吹时间
 float offset_h=1.0;      //电感量偏移
 
-
-
-
-
 char direct_mode_flag =0x61;    //模式
 
 Widget::Widget(QWidget *parent)
@@ -38,11 +44,36 @@ Widget::Widget(QWidget *parent)
 {
     ui->setupUi(this);
 
+//    Widget w10;
+//    Dialog_pulse w2;
+//    Dialog_double_pulse w3;
+//    Dialog_hand w4;
+//    Dialog_argon_protected_welding w5;
+
+
+ //   ui->tabWidget->addTab(&w10,"a");
+//    ui->tabWidget->addTab(&w2,"b");
+//    ui->tabWidget->addTab(&w3,"c");
+//    ui->tabWidget->addTab(&w4,"d");
+//    ui->tabWidget->addTab(&w5,"e");
+    Dialog w1;
+    ui_2 = new Dialog_pulse;
+    ui_3 = new Dialog_double_pulse;
+    //ui_4 = new Form;
+
+    Dialog_pulse test1;
+
+    //ui->stackedWidget->addWidget(&test1);
+//    ui->stackedWidget->addWidget(&test1);
+//    ui->stackedWidget->setCurrentIndex(0);
+//    ui->stackedWidget->show();
+//    ui->tab_1=&w2;
+
     tim = new QTimer(this);
     tim->setSingleShot(true);
 
     tim1 = new QTimer(this);
-    tim1->setInterval(500);
+    tim1->setInterval(100);
  //   tim1->start();
 
     connect(tim,SIGNAL(timeout()),this,SLOT(onTimeOut()));
@@ -58,30 +89,25 @@ Widget::Widget(QWidget *parent)
     connect(m_serial, &QSerialPort::readyRead, this, &Widget::readData);
 
     connect(ui->pushButton, &QPushButton::clicked, this, &Widget::Buttonfunction);
-    connect(ui->pushButton_f, &QPushButton::clicked, this, &Widget::Buttonfunction_f);
+//    connect(ui->pushButton_f, &QPushButton::clicked, this, &Widget::Buttonfunction_f);
     connect(ui->checkBox, &QCheckBox::stateChanged, this, &Widget::on_checkBox_stateChanged);
 
 
     connect(ui->checkBox, &QCheckBox::stateChanged, this, &Widget::on_checkBox_stateChanged);
     connect(ui->checkBox, &QCheckBox::stateChanged, this, &Widget::on_checkBox_stateChanged);
 
-    connect(ui->pushButton_5, &QPushButton::pressed, this, &Widget::on_pushButton_5_pressed);
-    connect(ui->pushButton_5, &QPushButton::released, this, &Widget::on_pushButton_5_released);
+//    connect(ui->pushButton_5, &QPushButton::pressed, this, &Widget::on_pushButton_5_pressed);
+//    connect(ui->pushButton_5, &QPushButton::released, this, &Widget::on_pushButton_5_released);
 
-    connect(ui->comboBox_2, &QComboBox::textActivated, this, &Widget::on_comboBox_2_textActivated);
-    connect(ui->comboBox_5, &QComboBox::textActivated, this, &Widget::on_comboBox_5_textActivated);
-    connect(ui->comboBox_6, &QComboBox::textActivated, this, &Widget::on_comboBox_6_textActivated);
+//    connect(ui->comboBox_2, &QComboBox::textActivated, this, &Widget::on_comboBox_2_textActivated);
+//    connect(ui->comboBox_5, &QComboBox::textActivated, this, &Widget::on_comboBox_5_textActivated);
+//    connect(ui->comboBox_6, &QComboBox::textActivated, this, &Widget::on_comboBox_6_textActivated);
 
-    connect(ui->doubleSpinBox, &QDoubleSpinBox::valueChanged, this, &Widget::on_doubleSpinBox_valueChanged);
-    connect(ui->doubleSpinBox_18, &QDoubleSpinBox::valueChanged, this, &Widget::on_doubleSpinBox_18_valueChanged);
-
-    connect(ui->spinBox_3, &QSpinBox::valueChanged, this, &Widget::on_spinBox_3_valueChanged);
-
-
-    connect(ui->doubleSpinBox_3, &QDoubleSpinBox::valueChanged, this, &Widget::on_doubleSpinBox_3_valueChanged);
-    connect(ui->doubleSpinBox_4, &QDoubleSpinBox::valueChanged, this, &Widget::on_doubleSpinBox_4_valueChanged);
-
-
+//    connect(ui->doubleSpinBox, &QDoubleSpinBox::valueChanged, this, &Widget::on_doubleSpinBox_valueChanged);
+//    connect(ui->doubleSpinBox_18, &QDoubleSpinBox::valueChanged, this, &Widget::on_doubleSpinBox_18_valueChanged);
+//    connect(ui->spinBox_3, &QSpinBox::valueChanged, this, &Widget::on_spinBox_3_valueChanged);
+//    connect(ui->doubleSpinBox_3, &QDoubleSpinBox::valueChanged, this, &Widget::on_doubleSpinBox_3_valueChanged);
+//    connect(ui->doubleSpinBox_4, &QDoubleSpinBox::valueChanged, this, &Widget::on_doubleSpinBox_4_valueChanged);
 }
 
 unsigned char define_cede[]={
@@ -206,17 +232,14 @@ void Widget::Buttonfunction_f(){
 
 
 
-    QString Dis_data;
-    QString temp;
-    for(int i=0;i<66;i++){
-        unsigned int a=(unsigned char)send_data[i];
-        temp=QString("%1 ").arg(a,0,16);
-        Dis_data.append(temp);
-    }
-    ui->textEdit_2->setMarkdown(Dis_data);
-
-
-
+//    QString Dis_data;
+//    QString temp;
+//    for(int i=0;i<66;i++){
+//        unsigned int a=(unsigned char)send_data[i];//
+//        temp=QString("%1 ").arg(a,0,16);
+//        Dis_data.append(temp);
+//    }
+//    ui->textEdit_2->setMarkdown(Dis_data);
     //m_serial->write(send_data,send_data.length());
 }
 
@@ -378,25 +401,16 @@ void Widget::onTimeOut()
 }
 void Widget::onTimeOut_1()
 {
+//    QString Dis_data;
+//    QString temp;
+//    for(int i=0;i<66;i++){
+//        unsigned int a=(unsigned char)global_send_buf[i];//
+//        temp=QString("%1 ").arg(a,0,16);
+//        Dis_data.append(temp);
+//    }
+//    ui->textEdit_2->setMarkdown(Dis_data);
 
-    // 电流显示
-    dis_tmp = QString("%1 ").arg(pulse_mode[4].dis_current);
-    ui->label->setText(dis_tmp);
-    // 电压显示
-    dis_tmp = QString("%1 ").arg(pulse_mode[4].dis_voltage);
-    ui->label_10->setText(dis_tmp);
-    pulse_set_send_data(&pulse_mode[4]);
-    for (int i = 0; i < 66; i++)
-    {
-        a = (unsigned char)(pulse_mode[4].after_send_data[i]);
-        temp = QString("%1 ").arg(a, 0, 16);
-        Dis_data.append(temp);
-    }
-    ui->textEdit->setMarkdown(Dis_data);
-
-
-    m_serial->write(&send_data[0],send_data.length());
-    //m_serial->write(&bytes[0],bytes.length());
+    m_serial->write((const char*)global_send_buf,66);
     qDebug("onTimeOut_1 500ms");
 }
 
@@ -497,37 +511,37 @@ void Widget::on_comboBox_5_textActivated(const QString &arg1)
 
 void Widget::on_comboBox_6_textActivated(const QString &arg1)
 {
-    QString dis=arg1;
-    if(!dis.compare(("0.8"))){
-        d_flag=0X61;
-        ui->doubleSpinBox_18->setMaximum(17.5);
-    }
-    else if(!dis.compare(("0.9"))){
-        d_flag=0X62;
-        ui->doubleSpinBox_18->setMaximum(14.5);
-    }
-    else if(!dis.compare(("1.0"))){
-        d_flag=0X63;
-        ui->doubleSpinBox_18->setMaximum(12.8);
-    }
+//    QString dis=arg1;
+//    if(!dis.compare(("0.8"))){
+//        d_flag=0X61;
+//        ui->doubleSpinBox_18->setMaximum(17.5);
+//    }
+//    else if(!dis.compare(("0.9"))){
+//        d_flag=0X62;
+//        ui->doubleSpinBox_18->setMaximum(14.5);
+//    }
+//    else if(!dis.compare(("1.0"))){
+//        d_flag=0X63;
+//        ui->doubleSpinBox_18->setMaximum(12.8);
+//    }
 
-    int temp=(int)(speed*10-10);
+//    int temp=(int)(speed*10-10);
 
-    switch(d_flag){
-      case 0x61:   //0.8
-        set_a=data_08[temp][0];
-        set_v=data_08[temp][1]*0.1+5;    //数据采集回来是微调-5模式下采集，这里加5恢复
-        break;
-    case 0x62:    //0.9
-        set_a=data_09[temp][0];
-        set_v=data_09[temp][1]*0.1+5;
-        break;
-    case 0x63:    //1.0
-        set_a=data_10[temp][0];
-        set_v=data_10[temp][1]*0.1+5;
-        break;
-    }
-       updata_display();
+//    switch(d_flag){
+//      case 0x61:   //0.8
+//        set_a=data_08[temp][0];
+//        set_v=data_08[temp][1]*0.1+5;    //数据采集回来是微调-5模式下采集，这里加5恢复
+//        break;
+//    case 0x62:    //0.9
+//        set_a=data_09[temp][0];
+//        set_v=data_09[temp][1]*0.1+5;
+//        break;
+//    case 0x63:    //1.0
+//        set_a=data_10[temp][0];
+//        set_v=data_10[temp][1]*0.1+5;
+//        break;
+//    }
+//       updata_display();
 }
 
 
@@ -537,23 +551,23 @@ void Widget::updata_display(){
 
     Buttonfunction_f();
 
-    int temp=(int)(speed*10-10);
-    switch(d_flag){
-      case 0x61:   //0.8
-        dis_tmp=QString("%1 ").arg(data_08[temp][3]);
-        break;
-    case 0x62:    //0.9
-        dis_tmp=QString("%1 ").arg(data_09[temp][3]);
-        break;
-    case 0x63:    //1.0
-        dis_tmp=QString("%1 ").arg(data_10[temp][3]);
-        break;
-    }
-    //电流显示
-    ui->label_41->setText(dis_tmp);
-    //电压显示
-    dis_tmp=QString("%1 ").arg(final_set_v);
-    ui->label_38->setText(dis_tmp);
+//    int temp=(int)(speed*10-10);
+//    switch(d_flag){
+//      case 0x61:   //0.8
+//        dis_tmp=QString("%1 ").arg(data_08[temp][3]);
+//        break;
+//    case 0x62:    //0.9
+//        dis_tmp=QString("%1 ").arg(data_09[temp][3]);
+//        break;
+//    case 0x63:    //1.0
+//        dis_tmp=QString("%1 ").arg(data_10[temp][3]);
+//        break;
+//    }
+//    //电流显示
+//    ui->label_41->setText(dis_tmp);
+//    //电压显示
+//    dis_tmp=QString("%1 ").arg(final_set_v);
+//    ui->label_38->setText(dis_tmp);
 }
 
 
@@ -617,4 +631,6 @@ void Widget::on_doubleSpinBox_4_valueChanged(double arg1)
     low_speed=arg1;
     updata_display();
 }
+
+
 

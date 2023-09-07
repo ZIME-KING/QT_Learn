@@ -75,6 +75,7 @@ void Dialog_hand:: updata(){
 
    for (int i = 0; i < 66; i++)
    {
+       global_send_buf[i]=set_data_hand[i];
        a = (unsigned char)(set_data_hand[i]);
        temp = QString("%1 ").arg(a, 0, 16);
        Dis_data.append(temp);

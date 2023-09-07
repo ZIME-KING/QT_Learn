@@ -56,7 +56,7 @@ void Dialog_argon_protected_welding::on_spinBox_2_valueChanged(int arg1)
     ui->label_4->setText(dis_tmp);
 
     for (int i = 0; i < 66; i++)
-    {
+    {   global_send_buf[i]=set_data[i];
         a = (unsigned char)(set_data[i]);
         temp = QString("%1 ").arg(a, 0, 16);
         Dis_data.append(temp);

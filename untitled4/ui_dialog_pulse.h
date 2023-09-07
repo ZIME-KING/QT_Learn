@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'dialog_pulse.ui'
 **
-** Created by: Qt User Interface Compiler version 6.2.2
+** Created by: Qt User Interface Compiler version 6.2.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -28,7 +28,7 @@ public:
     QComboBox *comboBox_3;
     QTextEdit *textEdit;
     QLabel *label_3;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QGridLayout *gridLayout;
     QLabel *label_11;
     QLabel *label_5;
@@ -51,7 +51,7 @@ public:
     {
         if (Dialog_pulse->objectName().isEmpty())
             Dialog_pulse->setObjectName(QString::fromUtf8("Dialog_pulse"));
-        Dialog_pulse->resize(590, 535);
+        Dialog_pulse->resize(480, 480);
         comboBox_3 = new QComboBox(Dialog_pulse);
         comboBox_3->addItem(QString());
         comboBox_3->addItem(QString());
@@ -60,57 +60,57 @@ public:
         comboBox_3->addItem(QString());
         comboBox_3->addItem(QString());
         comboBox_3->setObjectName(QString::fromUtf8("comboBox_3"));
-        comboBox_3->setGeometry(QRect(56, 21, 331, 21));
+        comboBox_3->setGeometry(QRect(6, 11, 331, 21));
         comboBox_3->setEditable(false);
         comboBox_3->setDuplicatesEnabled(false);
         comboBox_3->setFrame(true);
         textEdit = new QTextEdit(Dialog_pulse);
         textEdit->setObjectName(QString::fromUtf8("textEdit"));
-        textEdit->setGeometry(QRect(60, 360, 461, 171));
+        textEdit->setGeometry(QRect(10, 300, 461, 171));
         QFont font;
         font.setPointSize(16);
         textEdit->setFont(font);
         label_3 = new QLabel(Dialog_pulse);
         label_3->setObjectName(QString::fromUtf8("label_3"));
-        label_3->setGeometry(QRect(57, 52, 104, 16));
-        widget = new QWidget(Dialog_pulse);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(30, 110, 501, 221));
-        gridLayout = new QGridLayout(widget);
+        label_3->setGeometry(QRect(360, 10, 104, 16));
+        layoutWidget = new QWidget(Dialog_pulse);
+        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
+        layoutWidget->setGeometry(QRect(20, 60, 441, 231));
+        gridLayout = new QGridLayout(layoutWidget);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         gridLayout->setContentsMargins(0, 0, 0, 0);
-        label_11 = new QLabel(widget);
+        label_11 = new QLabel(layoutWidget);
         label_11->setObjectName(QString::fromUtf8("label_11"));
         label_11->setLineWidth(3);
 
         gridLayout->addWidget(label_11, 0, 0, 1, 1);
 
-        label_5 = new QLabel(widget);
+        label_5 = new QLabel(layoutWidget);
         label_5->setObjectName(QString::fromUtf8("label_5"));
         label_5->setLineWidth(3);
 
         gridLayout->addWidget(label_5, 0, 1, 1, 1);
 
-        label_10 = new QLabel(widget);
+        label_10 = new QLabel(layoutWidget);
         label_10->setObjectName(QString::fromUtf8("label_10"));
 
         gridLayout->addWidget(label_10, 0, 2, 1, 1);
 
-        label_2 = new QLabel(widget);
+        label_2 = new QLabel(layoutWidget);
         label_2->setObjectName(QString::fromUtf8("label_2"));
         label_2->setMinimumSize(QSize(24, 21));
         label_2->setLineWidth(3);
 
         gridLayout->addWidget(label_2, 0, 3, 1, 1);
 
-        spinBox = new QSpinBox(widget);
+        spinBox = new QSpinBox(layoutWidget);
         spinBox->setObjectName(QString::fromUtf8("spinBox"));
         spinBox->setMinimum(-10);
         spinBox->setMaximum(10);
 
         gridLayout->addWidget(spinBox, 0, 4, 1, 1);
 
-        doubleSpinBox = new QDoubleSpinBox(widget);
+        doubleSpinBox = new QDoubleSpinBox(layoutWidget);
         doubleSpinBox->setObjectName(QString::fromUtf8("doubleSpinBox"));
         doubleSpinBox->setDecimals(1);
         doubleSpinBox->setMinimum(-5.000000000000000);
@@ -119,14 +119,14 @@ public:
 
         gridLayout->addWidget(doubleSpinBox, 1, 0, 1, 1);
 
-        label_6 = new QLabel(widget);
+        label_6 = new QLabel(layoutWidget);
         label_6->setObjectName(QString::fromUtf8("label_6"));
         label_6->setMinimumSize(QSize(24, 21));
         label_6->setLineWidth(3);
 
         gridLayout->addWidget(label_6, 1, 3, 1, 1);
 
-        comboBox = new QComboBox(widget);
+        comboBox = new QComboBox(layoutWidget);
         comboBox->addItem(QString());
         comboBox->addItem(QString());
         comboBox->addItem(QString());
@@ -134,38 +134,38 @@ public:
 
         gridLayout->addWidget(comboBox, 1, 4, 1, 1);
 
-        label_8 = new QLabel(widget);
+        label_8 = new QLabel(layoutWidget);
         label_8->setObjectName(QString::fromUtf8("label_8"));
         label_8->setMinimumSize(QSize(33, 21));
         label_8->setLineWidth(3);
 
         gridLayout->addWidget(label_8, 2, 3, 1, 1);
 
-        comboBox_2 = new QComboBox(widget);
+        comboBox_2 = new QComboBox(layoutWidget);
         comboBox_2->addItem(QString());
         comboBox_2->addItem(QString());
         comboBox_2->setObjectName(QString::fromUtf8("comboBox_2"));
 
         gridLayout->addWidget(comboBox_2, 2, 4, 1, 1);
 
-        label_12 = new QLabel(widget);
+        label_12 = new QLabel(layoutWidget);
         label_12->setObjectName(QString::fromUtf8("label_12"));
         label_12->setLineWidth(3);
 
         gridLayout->addWidget(label_12, 3, 0, 1, 1);
 
-        label_7 = new QLabel(widget);
+        label_7 = new QLabel(layoutWidget);
         label_7->setObjectName(QString::fromUtf8("label_7"));
         label_7->setLineWidth(3);
 
         gridLayout->addWidget(label_7, 3, 1, 1, 1);
 
-        label = new QLabel(widget);
+        label = new QLabel(layoutWidget);
         label->setObjectName(QString::fromUtf8("label"));
 
         gridLayout->addWidget(label, 3, 2, 1, 1);
 
-        label_4 = new QLabel(widget);
+        label_4 = new QLabel(layoutWidget);
         label_4->setObjectName(QString::fromUtf8("label_4"));
         label_4->setMinimumSize(QSize(48, 21));
         label_4->setMaximumSize(QSize(48, 21));
@@ -179,7 +179,7 @@ public:
 
         gridLayout->addWidget(label_4, 3, 3, 1, 1);
 
-        doubleSpinBox_2 = new QDoubleSpinBox(widget);
+        doubleSpinBox_2 = new QDoubleSpinBox(layoutWidget);
         doubleSpinBox_2->setObjectName(QString::fromUtf8("doubleSpinBox_2"));
         doubleSpinBox_2->setDecimals(1);
         doubleSpinBox_2->setMinimum(0.100000000000000);
@@ -188,7 +188,7 @@ public:
 
         gridLayout->addWidget(doubleSpinBox_2, 3, 4, 1, 1);
 
-        doubleSpinBox_3 = new QDoubleSpinBox(widget);
+        doubleSpinBox_3 = new QDoubleSpinBox(layoutWidget);
         doubleSpinBox_3->setObjectName(QString::fromUtf8("doubleSpinBox_3"));
         doubleSpinBox_3->setDecimals(1);
         doubleSpinBox_3->setMinimum(1.000000000000000);
@@ -219,7 +219,7 @@ public:
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Microsoft YaHei UI'; font-size:16pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt;\">send_data</span></p></body></html>", nullptr));
-        label_3->setText(QCoreApplication::translate("Dialog_pulse", "\347\242\263\351\222\242100%\344\272\214\346\260\247\345\214\226\347\242\263", nullptr));
+        label_3->setText(QCoreApplication::translate("Dialog_pulse", "\350\204\211\345\206\262", nullptr));
         label_11->setText(QCoreApplication::translate("Dialog_pulse", "\347\224\265\345\216\213\345\276\256\350\260\203", nullptr));
         label_5->setText(QCoreApplication::translate("Dialog_pulse", "\347\224\265\345\216\213 V", nullptr));
         label_10->setText(QCoreApplication::translate("Dialog_pulse", "TextLabel", nullptr));

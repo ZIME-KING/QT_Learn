@@ -85,7 +85,7 @@ void Dialog::updata_display()
         ///*
         dc_mode[0].set_direct_mode_flag = input_direct_mode_flag; // 模式标记
         // dc_mode[0].set_voltage=input_voltage;                       // 输出电压
-        dc_mode[0].set_offest_voltage = input_offest_voltage * 10 + 49; // 输出电压偏移值
+        dc_mode[0].set_offest_voltage = input_offest_voltage * 10 + 50; // 输出电压偏移值
 
         // dc_mode[0].set_feeding_speed = input_feeding_speed * 10;   // 送丝速度
         dc_mode[0].set_inductance = input_inductance + 10;
@@ -94,7 +94,7 @@ void Dialog::updata_display()
         // dc_mode[0].set_unknown_data=input_unknown_data;       // dc_mdoe->after_send_data[55]，dc_mdoe->after_send_data[56]
         dc_mode[0].set_2T_4T = input_2T_4T;                                    // 2t，4t模式切换
         dc_mode[0].set_after_action_time = input_after_action_time * 10 - 1;   // 后吹时间
-        dc_mode[0].set_slow_feeding_speed = input_slow_feeding_speed * 10 + 9; // 缓慢送丝速度
+        dc_mode[0].set_slow_feeding_speed = input_slow_feeding_speed * 10; // 缓慢送丝速度
         dc_mode[0].set_feeding_flag = input_feeding_flag;                      // 送丝标记
 
         check_count = (int)(input_feeding_speed * 10 - 10);
@@ -137,11 +137,15 @@ void Dialog::updata_display()
 
         for (int i = 0; i < 66; i++)
         {
+            global_send_buf[i]=dc_mode[0].after_send_data[i];
             a = (unsigned char)dc_mode[0].after_send_data[i];
             temp = QString("%1 ").arg(a, 0, 16);
             Dis_data.append(temp);
         }
+
+
         ui->textEdit->setMarkdown(Dis_data);
+
         //*/
     }
     // 碳钢 25%二氧化碳
@@ -149,7 +153,7 @@ void Dialog::updata_display()
     {
         dc_mode[1].set_direct_mode_flag = input_direct_mode_flag; // 模式标记
         // dc_mode [1].set_voltage=input_voltage;                       // 输出电压
-        dc_mode[1].set_offest_voltage = input_offest_voltage * 10 + 49; // 输出电压偏移值
+        dc_mode[1].set_offest_voltage = input_offest_voltage * 10 + 50; // 输出电压偏移值
 
         // dc_mode [1].set_feeding_speed = input_feeding_speed * 10;   // 送丝速度
         dc_mode[1].set_inductance = input_inductance + 10;
@@ -158,7 +162,7 @@ void Dialog::updata_display()
         // dc_mode [1].set_unknown_data=input_unknown_data;       // dc_mdoe->after_send_data[55]，dc_mdoe->after_send_data[56]
         dc_mode[1].set_2T_4T = input_2T_4T;                                    // 2t，4t模式切换
         dc_mode[1].set_after_action_time = input_after_action_time * 10 - 1;   // 后吹时间
-        dc_mode[1].set_slow_feeding_speed = input_slow_feeding_speed * 10 + 9; // 缓慢送丝速度
+        dc_mode[1].set_slow_feeding_speed = input_slow_feeding_speed * 10; // 缓慢送丝速度
         dc_mode[1].set_feeding_flag = input_feeding_flag;                      // 送丝标记
 
         check_count = (int)(input_feeding_speed * 10 - 10);
@@ -200,7 +204,7 @@ void Dialog::updata_display()
         direct_set_send_data(&dc_mode[1]);
 
         for (int i = 0; i < 66; i++)
-        {
+        {   global_send_buf[i]=dc_mode[1].after_send_data[i];
             a = (unsigned char)(dc_mode[1].after_send_data[i]);
             temp = QString("%1 ").arg(a, 0, 16);
             Dis_data.append(temp);
@@ -220,7 +224,7 @@ void Dialog::updata_display()
         // dc_mode [2].set_unknown_data=input_unknown_data;       // dc_mdoe->after_send_data[55]，dc_mdoe->after_send_data[56]
         dc_mode[2].set_2T_4T = input_2T_4T;                                    // 2t，4t模式切换
         dc_mode[2].set_after_action_time = input_after_action_time * 10 - 1;   // 后吹时间
-        dc_mode[2].set_slow_feeding_speed = input_slow_feeding_speed * 10 + 9; // 缓慢送丝速度
+        dc_mode[2].set_slow_feeding_speed = input_slow_feeding_speed * 10; // 缓慢送丝速度
         dc_mode[2].set_feeding_flag = input_feeding_flag;                      // 送丝标记
         check_count = (int)(input_feeding_speed * 10 - 10);
 
@@ -267,6 +271,7 @@ void Dialog::updata_display()
 
         for (int i = 0; i < 66; i++)
         {
+            global_send_buf[i]=dc_mode[2].after_send_data[i];
             a = (unsigned char)(dc_mode[2].after_send_data[i]);
             temp = QString("%1 ").arg(a, 0, 16);
             Dis_data.append(temp);
@@ -278,7 +283,7 @@ void Dialog::updata_display()
     {
         dc_mode[3].set_direct_mode_flag = input_direct_mode_flag; // 模式标记
         // dc_mode [3].set_voltage=input_voltage;                       // 输出电压
-        dc_mode[3].set_offest_voltage = input_offest_voltage * 10 + 49; // 输出电压偏移值
+        dc_mode[3].set_offest_voltage = input_offest_voltage * 10 + 50; // 输出电压偏移值
 
         // dc_mode [3].set_feeding_speed = input_feeding_speed * 10;   // 送丝速度
         dc_mode[3].set_inductance = input_inductance + 10;
@@ -287,7 +292,7 @@ void Dialog::updata_display()
         // dc_mode [3].set_unknown_data=input_unknown_data;       // dc_mdoe->after_send_data[55]，dc_mdoe->after_send_data[56]
         dc_mode[3].set_2T_4T = input_2T_4T;                                    // 2t，4t模式切换
         dc_mode[3].set_after_action_time = input_after_action_time * 10 - 1;   // 后吹时间
-        dc_mode[3].set_slow_feeding_speed = input_slow_feeding_speed * 10 + 9; // 缓慢送丝速度
+        dc_mode[3].set_slow_feeding_speed = input_slow_feeding_speed * 10; // 缓慢送丝速度
         dc_mode[3].set_feeding_flag = input_feeding_flag;                      // 送丝标记
 
         check_count = (int)(input_feeding_speed * 10 - 10);
@@ -329,7 +334,7 @@ void Dialog::updata_display()
         direct_set_send_data(&dc_mode[3]);
 
         for (int i = 0; i < 66; i++)
-        {
+        {   global_send_buf[i]=dc_mode[3].after_send_data[i];
             a = (unsigned char)(dc_mode[3].after_send_data[i]);
             temp = QString("%1 ").arg(a, 0, 16);
             Dis_data.append(temp);
@@ -349,7 +354,7 @@ void Dialog::updata_display()
         // dc_mode [4].set_unknown_data=input_unknown_data;       // dc_mdoe->after_send_data[55]，dc_mdoe->after_send_data[56]
         dc_mode[4].set_2T_4T = input_2T_4T;                                    // 2t，4t模式切换
         dc_mode[4].set_after_action_time = input_after_action_time * 10 - 1;   // 后吹时间
-        dc_mode[4].set_slow_feeding_speed = input_slow_feeding_speed * 10 + 9; // 缓慢送丝速度
+        dc_mode[4].set_slow_feeding_speed = input_slow_feeding_speed * 10; // 缓慢送丝速度
         dc_mode[4].set_feeding_flag = input_feeding_flag;                      // 送丝标记
         check_count = (int)(input_feeding_speed * 10 - 10);
 
@@ -396,6 +401,7 @@ void Dialog::updata_display()
 
         for (int i = 0; i < 66; i++)
         {
+            global_send_buf[i]=dc_mode[4].after_send_data[i];
             a = (unsigned char)(dc_mode[4].after_send_data[i]);
             temp = QString("%1 ").arg(a, 0, 16);
             Dis_data.append(temp);
@@ -422,12 +428,12 @@ void Dialog::on_doubleSpinBox_valueChanged(double arg1)
         input_voltage = arg1;
     }
     // 一元化
-    else if (input_direct_mode_flag == 0x02)
+    else if (input_direct_mode_flag == 0x03)
     {
         input_offest_voltage = arg1;
     }
     // 手动模式输入电压设置
-    else if (input_direct_mode_flag == 0x02)
+    else if (input_direct_mode_flag == 0x04)
     {
         input_voltage = arg1;
     }
@@ -527,3 +533,19 @@ void Dialog::on_comboBox_3_textActivated(const QString &arg1)
     }
     updata_display();
 }
+
+
+
+void Dialog::on_pushButton_pressed()
+{
+    input_feeding_flag=1;
+    updata_display();
+}
+
+
+void Dialog::on_pushButton_released()
+{
+     input_feeding_flag=0;
+     updata_display();
+}
+

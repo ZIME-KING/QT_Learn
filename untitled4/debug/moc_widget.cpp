@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'widget.h'
 **
-** Created by: The Qt Meta Object Compiler version 68 (Qt 6.2.2)
+** Created by: The Qt Meta Object Compiler version 68 (Qt 6.2.4)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -13,7 +13,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'widget.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 68
-#error "This file was generated using the moc from 6.2.2. It"
+#error "This file was generated using the moc from 6.2.4. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Widget_t {
-    const uint offsetsAndSize[56];
-    char stringdata0[518];
+    const uint offsetsAndSize[60];
+    char stringdata0[551];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(offsetof(qt_meta_stringdata_Widget_t, stringdata0) + ofs), len 
@@ -56,7 +56,9 @@ QT_MOC_LITERAL(365, 29), // "on_doubleSpinBox_valueChanged"
 QT_MOC_LITERAL(395, 32), // "on_doubleSpinBox_18_valueChanged"
 QT_MOC_LITERAL(428, 25), // "on_spinBox_3_valueChanged"
 QT_MOC_LITERAL(454, 31), // "on_doubleSpinBox_3_valueChanged"
-QT_MOC_LITERAL(486, 31) // "on_doubleSpinBox_4_valueChanged"
+QT_MOC_LITERAL(486, 31), // "on_doubleSpinBox_4_valueChanged"
+QT_MOC_LITERAL(518, 26), // "on_tabWidget_tabBarClicked"
+QT_MOC_LITERAL(545, 5) // "index"
 
     },
     "Widget\0onTimeOut\0\0onTimeOut_1\0"
@@ -75,7 +77,8 @@ QT_MOC_LITERAL(486, 31) // "on_doubleSpinBox_4_valueChanged"
     "on_doubleSpinBox_18_valueChanged\0"
     "on_spinBox_3_valueChanged\0"
     "on_doubleSpinBox_3_valueChanged\0"
-    "on_doubleSpinBox_4_valueChanged"
+    "on_doubleSpinBox_4_valueChanged\0"
+    "on_tabWidget_tabBarClicked\0index"
 };
 #undef QT_MOC_LITERAL
 
@@ -85,7 +88,7 @@ static const uint qt_meta_data_Widget[] = {
       10,       // revision
        0,       // classname
        0,    0, // classinfo
-      22,   14, // methods
+      23,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -93,28 +96,29 @@ static const uint qt_meta_data_Widget[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,  146,    2, 0x08,    1 /* Private */,
-       3,    0,  147,    2, 0x08,    2 /* Private */,
-       4,    0,  148,    2, 0x08,    3 /* Private */,
-       5,    0,  149,    2, 0x08,    4 /* Private */,
-       6,    0,  150,    2, 0x08,    5 /* Private */,
-       7,    0,  151,    2, 0x08,    6 /* Private */,
-       8,    0,  152,    2, 0x08,    7 /* Private */,
-       9,    1,  153,    2, 0x08,    8 /* Private */,
-      11,    0,  156,    2, 0x08,   10 /* Private */,
-      12,    1,  157,    2, 0x08,   11 /* Private */,
-      15,    1,  160,    2, 0x08,   13 /* Private */,
-      17,    0,  163,    2, 0x08,   15 /* Private */,
-      18,    0,  164,    2, 0x08,   16 /* Private */,
-      19,    1,  165,    2, 0x08,   17 /* Private */,
-      20,    1,  168,    2, 0x08,   19 /* Private */,
-      21,    1,  171,    2, 0x08,   21 /* Private */,
-      22,    1,  174,    2, 0x08,   23 /* Private */,
-      23,    1,  177,    2, 0x08,   25 /* Private */,
-      24,    1,  180,    2, 0x08,   27 /* Private */,
-      25,    1,  183,    2, 0x08,   29 /* Private */,
-      26,    1,  186,    2, 0x08,   31 /* Private */,
-      27,    1,  189,    2, 0x08,   33 /* Private */,
+       1,    0,  152,    2, 0x08,    1 /* Private */,
+       3,    0,  153,    2, 0x08,    2 /* Private */,
+       4,    0,  154,    2, 0x08,    3 /* Private */,
+       5,    0,  155,    2, 0x08,    4 /* Private */,
+       6,    0,  156,    2, 0x08,    5 /* Private */,
+       7,    0,  157,    2, 0x08,    6 /* Private */,
+       8,    0,  158,    2, 0x08,    7 /* Private */,
+       9,    1,  159,    2, 0x08,    8 /* Private */,
+      11,    0,  162,    2, 0x08,   10 /* Private */,
+      12,    1,  163,    2, 0x08,   11 /* Private */,
+      15,    1,  166,    2, 0x08,   13 /* Private */,
+      17,    0,  169,    2, 0x08,   15 /* Private */,
+      18,    0,  170,    2, 0x08,   16 /* Private */,
+      19,    1,  171,    2, 0x08,   17 /* Private */,
+      20,    1,  174,    2, 0x08,   19 /* Private */,
+      21,    1,  177,    2, 0x08,   21 /* Private */,
+      22,    1,  180,    2, 0x08,   23 /* Private */,
+      23,    1,  183,    2, 0x08,   25 /* Private */,
+      24,    1,  186,    2, 0x08,   27 /* Private */,
+      25,    1,  189,    2, 0x08,   29 /* Private */,
+      26,    1,  192,    2, 0x08,   31 /* Private */,
+      27,    1,  195,    2, 0x08,   33 /* Private */,
+      28,    1,  198,    2, 0x08,   35 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -139,6 +143,7 @@ static const uint qt_meta_data_Widget[] = {
     QMetaType::Void, QMetaType::Int,   16,
     QMetaType::Void, QMetaType::Double,   16,
     QMetaType::Void, QMetaType::Double,   16,
+    QMetaType::Void, QMetaType::Int,   29,
 
        0        // eod
 };
@@ -156,21 +161,22 @@ void Widget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         case 4: _t->openSerialPort(); break;
         case 5: _t->closeSerialPort(); break;
         case 6: _t->about(); break;
-        case 7: _t->writeData((*reinterpret_cast< const QByteArray(*)>(_a[1]))); break;
+        case 7: _t->writeData((*reinterpret_cast< std::add_pointer_t<QByteArray>>(_a[1]))); break;
         case 8: _t->readData(); break;
-        case 9: _t->handleError((*reinterpret_cast< QSerialPort::SerialPortError(*)>(_a[1]))); break;
-        case 10: _t->on_checkBox_stateChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 9: _t->handleError((*reinterpret_cast< std::add_pointer_t<QSerialPort::SerialPortError>>(_a[1]))); break;
+        case 10: _t->on_checkBox_stateChanged((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
         case 11: _t->on_pushButton_5_pressed(); break;
         case 12: _t->on_pushButton_5_released(); break;
-        case 13: _t->on_stackedWidget_currentChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 14: _t->on_comboBox_2_textActivated((*reinterpret_cast< const QString(*)>(_a[1]))); break;
-        case 15: _t->on_comboBox_5_textActivated((*reinterpret_cast< const QString(*)>(_a[1]))); break;
-        case 16: _t->on_comboBox_6_textActivated((*reinterpret_cast< const QString(*)>(_a[1]))); break;
-        case 17: _t->on_doubleSpinBox_valueChanged((*reinterpret_cast< double(*)>(_a[1]))); break;
-        case 18: _t->on_doubleSpinBox_18_valueChanged((*reinterpret_cast< double(*)>(_a[1]))); break;
-        case 19: _t->on_spinBox_3_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 20: _t->on_doubleSpinBox_3_valueChanged((*reinterpret_cast< double(*)>(_a[1]))); break;
-        case 21: _t->on_doubleSpinBox_4_valueChanged((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 13: _t->on_stackedWidget_currentChanged((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 14: _t->on_comboBox_2_textActivated((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
+        case 15: _t->on_comboBox_5_textActivated((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
+        case 16: _t->on_comboBox_6_textActivated((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
+        case 17: _t->on_doubleSpinBox_valueChanged((*reinterpret_cast< std::add_pointer_t<double>>(_a[1]))); break;
+        case 18: _t->on_doubleSpinBox_18_valueChanged((*reinterpret_cast< std::add_pointer_t<double>>(_a[1]))); break;
+        case 19: _t->on_spinBox_3_valueChanged((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 20: _t->on_doubleSpinBox_3_valueChanged((*reinterpret_cast< std::add_pointer_t<double>>(_a[1]))); break;
+        case 21: _t->on_doubleSpinBox_4_valueChanged((*reinterpret_cast< std::add_pointer_t<double>>(_a[1]))); break;
+        //case 22: _t->on_tabWidget_tabBarClicked((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
         default: ;
         }
     }
@@ -184,7 +190,7 @@ const QMetaObject Widget::staticMetaObject = { {
     nullptr,
 qt_incomplete_metaTypeArray<qt_meta_stringdata_Widget_t
 , QtPrivate::TypeAndForceComplete<Widget, std::true_type>
-, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const QByteArray &, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QSerialPort::SerialPortError, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const QString &, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const QString &, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const QString &, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>
+, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const QByteArray &, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QSerialPort::SerialPortError, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const QString &, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const QString &, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const QString &, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>
 
 
 >,
@@ -211,13 +217,13 @@ int Widget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 22)
+        if (_id < 23)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 22;
+        _id -= 23;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 22)
+        if (_id < 23)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 22;
+        _id -= 23;
     }
     return _id;
 }
