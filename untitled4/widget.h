@@ -66,7 +66,6 @@ private slots:
 
     void on_comboBox_5_textActivated(const QString &arg1);
 
-    void on_comboBox_6_textActivated(const QString &arg1);
 
     void on_doubleSpinBox_valueChanged(double arg1);
 
@@ -78,6 +77,18 @@ private slots:
 
     void on_doubleSpinBox_4_valueChanged(double arg1);
 
+
+    void on_pushButton_2_clicked();
+
+    void on_pushButton_3_clicked();
+
+    void on_pushButton_4_clicked();
+
+    void on_pushButton_5_clicked();
+
+    void on_pushButton_6_clicked();
+
+    void on_pushButton_7_clicked();
 
 private:
     void initActionsConnections();

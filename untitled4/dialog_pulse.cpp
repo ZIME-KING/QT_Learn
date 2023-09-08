@@ -47,10 +47,8 @@ void Dialog_pulse::updata_display()
     QString dis_tmp;
     QString Dis_data;
     QString temp;
-
     int a;
     int check_count = 0;
-
     // 0.8
     if (input_wire_diameter == 0x00)
     {

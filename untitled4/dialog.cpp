@@ -440,7 +440,6 @@ void Dialog::updata_display()
         dc_mode[4].set_direct_mode_flag = input_direct_mode_flag; // 模式标记
         // dc_mode [4].set_voltage=input_voltage;                       // 输出电压
         // dc_mode [4].set_offest_voltage = input_offest_voltage * 10 + 49; // 输出电压偏移值
-
         // dc_mode [4].set_feeding_speed = input_feeding_speed * 10;   // 送丝速度
         dc_mode[4].set_inductance = input_inductance + 10;  // 电感偏移值
         dc_mode[4].set_wire_diameter = input_wire_diameter; // 丝径 0.8 0.9 1.0

@@ -13,83 +13,36 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QComboBox" name="comboBox_3">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>141</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <item>
-    <property name="text">
-     <string>碳钢100%二氧化碳</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>碳钢25%二氧化碳</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>恒压</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>无气药芯</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>拉丝枪</string>
-    </property>
-   </item>
-  </widget>
   <widget class="QTextEdit" name="textEdit">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>290</y>
-     <width>461</width>
-     <height>181</height>
+     <x>0</x>
+     <y>320</y>
+     <width>480</width>
+     <height>160</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>Courier New</family>
-     <pointsize>16</pointsize>
+     <family>Courier</family>
+     <pointsize>15</pointsize>
+     <kerning>false</kerning>
     </font>
    </property>
    <property name="html">
     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Courier New'; font-size:16pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Courier'; font-size:15pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Microsoft YaHei UI'; font-size:9pt;&quot;&gt;send_data&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton">
-   <property name="geometry">
-    <rect>
-     <x>310</x>
-     <y>10</y>
-     <width>80</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>出丝</string>
    </property>
   </widget>
   <widget class="QComboBox" name="comboBox_2">
    <property name="geometry">
     <rect>
-     <x>368</x>
-     <y>161</y>
-     <width>44</width>
+     <x>378</x>
+     <y>190</y>
+     <width>56</width>
      <height>24</height>
     </rect>
    </property>
@@ -104,149 +57,12 @@ p, li { white-space: pre-wrap; }
     </property>
    </item>
   </widget>
-  <widget class="QLabel" name="label_10">
-   <property name="geometry">
-    <rect>
-     <x>217</x>
-     <y>61</y>
-     <width>54</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>TextLabel</string>
-   </property>
-  </widget>
-  <widget class="QDoubleSpinBox" name="doubleSpinBox">
-   <property name="geometry">
-    <rect>
-     <x>21</x>
-     <y>111</y>
-     <width>50</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="decimals">
-    <number>1</number>
-   </property>
-   <property name="minimum">
-    <double>-5.000000000000000</double>
-   </property>
-   <property name="maximum">
-    <double>5.000000000000000</double>
-   </property>
-   <property name="singleStep">
-    <double>0.100000000000000</double>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_5">
-   <property name="geometry">
-    <rect>
-     <x>119</x>
-     <y>61</y>
-     <width>36</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="lineWidth">
-    <number>3</number>
-   </property>
-   <property name="text">
-    <string>电压 V</string>
-   </property>
-  </widget>
-  <widget class="QDoubleSpinBox" name="doubleSpinBox_3">
-   <property name="geometry">
-    <rect>
-     <x>21</x>
-     <y>261</y>
-     <width>52</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="decimals">
-    <number>1</number>
-   </property>
-   <property name="minimum">
-    <double>1.000000000000000</double>
-   </property>
-   <property name="maximum">
-    <double>12.800000000000001</double>
-   </property>
-   <property name="singleStep">
-    <double>0.100000000000000</double>
-   </property>
-   <property name="value">
-    <double>10.000000000000000</double>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_12">
-   <property name="geometry">
-    <rect>
-     <x>21</x>
-     <y>211</y>
-     <width>63</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="lineWidth">
-    <number>3</number>
-   </property>
-   <property name="text">
-    <string>速度m/min</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>217</x>
-     <y>211</y>
-     <width>54</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>TextLabel</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_11">
-   <property name="geometry">
-    <rect>
-     <x>21</x>
-     <y>61</y>
-     <width>48</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="lineWidth">
-    <number>3</number>
-   </property>
-   <property name="text">
-    <string>电压微调</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_7">
-   <property name="geometry">
-    <rect>
-     <x>119</x>
-     <y>211</y>
-     <width>36</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="lineWidth">
-    <number>3</number>
-   </property>
-   <property name="text">
-    <string>电流 A</string>
-   </property>
-  </widget>
   <widget class="QDoubleSpinBox" name="doubleSpinBox_2">
    <property name="geometry">
     <rect>
-     <x>368</x>
-     <y>211</y>
-     <width>44</width>
+     <x>378</x>
+     <y>240</y>
+     <width>56</width>
      <height>24</height>
     </rect>
    </property>
@@ -266,9 +82,9 @@ p, li { white-space: pre-wrap; }
   <widget class="QComboBox" name="comboBox">
    <property name="geometry">
     <rect>
-     <x>368</x>
-     <y>111</y>
-     <width>46</width>
+     <x>378</x>
+     <y>140</y>
+     <width>56</width>
      <height>24</height>
     </rect>
    </property>
@@ -291,9 +107,9 @@ p, li { white-space: pre-wrap; }
   <widget class="QSpinBox" name="spinBox">
    <property name="geometry">
     <rect>
-     <x>368</x>
-     <y>61</y>
-     <width>47</width>
+     <x>378</x>
+     <y>90</y>
+     <width>56</width>
      <height>24</height>
     </rect>
    </property>
@@ -307,9 +123,9 @@ p, li { white-space: pre-wrap; }
   <widget class="QDoubleSpinBox" name="doubleSpinBox_4">
    <property name="geometry">
     <rect>
-     <x>368</x>
-     <y>261</y>
-     <width>44</width>
+     <x>378</x>
+     <y>290</y>
+     <width>56</width>
      <height>24</height>
     </rect>
    </property>
@@ -329,8 +145,8 @@ p, li { white-space: pre-wrap; }
   <widget class="QLabel" name="label_8">
    <property name="geometry">
     <rect>
-     <x>290</x>
-     <y>160</y>
+     <x>300</x>
+     <y>189</y>
      <width>64</width>
      <height>21</height>
     </rect>
@@ -351,8 +167,8 @@ p, li { white-space: pre-wrap; }
   <widget class="QLabel" name="label_4">
    <property name="geometry">
     <rect>
-     <x>290</x>
-     <y>211</y>
+     <x>300</x>
+     <y>240</y>
      <width>64</width>
      <height>21</height>
     </rect>
@@ -375,8 +191,8 @@ p, li { white-space: pre-wrap; }
   <widget class="QLabel" name="label_9">
    <property name="geometry">
     <rect>
-     <x>290</x>
-     <y>261</y>
+     <x>300</x>
+     <y>290</y>
      <width>64</width>
      <height>21</height>
     </rect>
@@ -399,8 +215,8 @@ p, li { white-space: pre-wrap; }
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>290</x>
-     <y>60</y>
+     <x>300</x>
+     <y>89</y>
      <width>64</width>
      <height>21</height>
     </rect>
@@ -421,8 +237,8 @@ p, li { white-space: pre-wrap; }
   <widget class="QLabel" name="label_6">
    <property name="geometry">
     <rect>
-     <x>290</x>
-     <y>110</y>
+     <x>300</x>
+     <y>139</y>
      <width>64</width>
      <height>21</height>
     </rect>
@@ -439,6 +255,246 @@ p, li { white-space: pre-wrap; }
    <property name="text">
     <string>丝径</string>
    </property>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>119</y>
+     <width>241</width>
+     <height>161</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout_3">
+    <item row="0" column="2">
+     <widget class="QLabel" name="label_5">
+      <property name="tabletTracking">
+       <bool>false</bool>
+      </property>
+      <property name="lineWidth">
+       <number>3</number>
+      </property>
+      <property name="text">
+       <string>电压 V</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="3">
+     <widget class="Line" name="line_4">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="4">
+     <widget class="QLabel" name="label">
+      <property name="font">
+       <font>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>270</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="3">
+     <widget class="Line" name="line_6">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="Line" name="line_3">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="4">
+     <widget class="Line" name="line_5">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_11">
+        <property name="lineWidth">
+         <number>3</number>
+        </property>
+        <property name="text">
+         <string>电压微调</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QDoubleSpinBox" name="doubleSpinBox">
+        <property name="decimals">
+         <number>1</number>
+        </property>
+        <property name="minimum">
+         <double>-5.000000000000000</double>
+        </property>
+        <property name="maximum">
+         <double>5.000000000000000</double>
+        </property>
+        <property name="singleStep">
+         <double>0.100000000000000</double>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="0" column="1" rowspan="3">
+     <widget class="Line" name="line">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_12">
+        <property name="lineWidth">
+         <number>3</number>
+        </property>
+        <property name="text">
+         <string>速度m/min</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QDoubleSpinBox" name="doubleSpinBox_3">
+        <property name="decimals">
+         <number>1</number>
+        </property>
+        <property name="minimum">
+         <double>1.000000000000000</double>
+        </property>
+        <property name="maximum">
+         <double>12.800000000000001</double>
+        </property>
+        <property name="singleStep">
+         <double>0.100000000000000</double>
+        </property>
+        <property name="value">
+         <double>10.000000000000000</double>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="0" column="4">
+     <widget class="QLabel" name="label_10">
+      <property name="font">
+       <font>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>27</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="2">
+     <widget class="QLabel" name="label_7">
+      <property name="lineWidth">
+       <number>3</number>
+      </property>
+      <property name="text">
+       <string>电流 A</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="2">
+     <widget class="Line" name="line_2">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>1</x>
+     <y>2</y>
+     <width>481</width>
+     <height>76</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout_4">
+    <item row="0" column="0">
+     <widget class="QLabel" name="label_3">
+      <property name="text">
+       <string>直流模式</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QComboBox" name="comboBox_3">
+      <item>
+       <property name="text">
+        <string>碳钢100%二氧化碳</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>碳钢25%二氧化碳</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>恒压</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>无气药芯</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>拉丝枪</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QPushButton" name="pushButton">
+      <property name="text">
+       <string>出丝</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources/>

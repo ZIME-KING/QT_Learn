@@ -19,8 +19,6 @@ unsigned char define_cede_1[]={
 };
 
 
-
-
 void __attribute__((constructor)) init_direct_display()
 {
     memcpy(dc_mode[0].name, "100%碳钢", sizeof "100%碳钢");

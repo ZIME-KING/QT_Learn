@@ -44,31 +44,6 @@ Widget::Widget(QWidget *parent)
 {
     ui->setupUi(this);
 
-//    Widget w10;
-//    Dialog_pulse w2;
-//    Dialog_double_pulse w3;
-//    Dialog_hand w4;
-//    Dialog_argon_protected_welding w5;
-
-
- //   ui->tabWidget->addTab(&w10,"a");
-//    ui->tabWidget->addTab(&w2,"b");
-//    ui->tabWidget->addTab(&w3,"c");
-//    ui->tabWidget->addTab(&w4,"d");
-//    ui->tabWidget->addTab(&w5,"e");
-    Dialog w1;
-    ui_2 = new Dialog_pulse;
-    ui_3 = new Dialog_double_pulse;
-    //ui_4 = new Form;
-
-    Dialog_pulse test1;
-
-    //ui->stackedWidget->addWidget(&test1);
-//    ui->stackedWidget->addWidget(&test1);
-//    ui->stackedWidget->setCurrentIndex(0);
-//    ui->stackedWidget->show();
-//    ui->tab_1=&w2;
-
     tim = new QTimer(this);
     tim->setSingleShot(true);
 
@@ -89,25 +64,25 @@ Widget::Widget(QWidget *parent)
     connect(m_serial, &QSerialPort::readyRead, this, &Widget::readData);
 
     connect(ui->pushButton, &QPushButton::clicked, this, &Widget::Buttonfunction);
-//    connect(ui->pushButton_f, &QPushButton::clicked, this, &Widget::Buttonfunction_f);
     connect(ui->checkBox, &QCheckBox::stateChanged, this, &Widget::on_checkBox_stateChanged);
-
 
     connect(ui->checkBox, &QCheckBox::stateChanged, this, &Widget::on_checkBox_stateChanged);
     connect(ui->checkBox, &QCheckBox::stateChanged, this, &Widget::on_checkBox_stateChanged);
 
-//    connect(ui->pushButton_5, &QPushButton::pressed, this, &Widget::on_pushButton_5_pressed);
-//    connect(ui->pushButton_5, &QPushButton::released, this, &Widget::on_pushButton_5_released);
 
-//    connect(ui->comboBox_2, &QComboBox::textActivated, this, &Widget::on_comboBox_2_textActivated);
-//    connect(ui->comboBox_5, &QComboBox::textActivated, this, &Widget::on_comboBox_5_textActivated);
-//    connect(ui->comboBox_6, &QComboBox::textActivated, this, &Widget::on_comboBox_6_textActivated);
+    static Dialog w1;
+    static Dialog_pulse w2;
+    static Dialog_double_pulse w3;
+    static Dialog_hand w4;
+    static Dialog_argon_protected_welding w5;
 
-//    connect(ui->doubleSpinBox, &QDoubleSpinBox::valueChanged, this, &Widget::on_doubleSpinBox_valueChanged);
-//    connect(ui->doubleSpinBox_18, &QDoubleSpinBox::valueChanged, this, &Widget::on_doubleSpinBox_18_valueChanged);
-//    connect(ui->spinBox_3, &QSpinBox::valueChanged, this, &Widget::on_spinBox_3_valueChanged);
-//    connect(ui->doubleSpinBox_3, &QDoubleSpinBox::valueChanged, this, &Widget::on_doubleSpinBox_3_valueChanged);
-//    connect(ui->doubleSpinBox_4, &QDoubleSpinBox::valueChanged, this, &Widget::on_doubleSpinBox_4_valueChanged);
+    ui->stackedWidget->addWidget(&w1);
+    ui->stackedWidget->addWidget(&w2);
+    ui->stackedWidget->addWidget(&w3);
+    ui->stackedWidget->addWidget(&w4);
+    ui->stackedWidget->addWidget(&w5);
+
+    ui->stackedWidget->setCurrentIndex(0);
 }
 
 unsigned char define_cede[]={
@@ -328,39 +303,118 @@ typedef union{
     unsigned char date[4];
 }hex2int;
 
-//qDebug("start");
-//for(int i = 0;i<data.length();i++)
-//qDebug("%2x", *(pdata+i));
-//qDebug("end\r\n");
-//qDebug("%d", now_rx_len);
-//qDebug("start");
-//for(int i = 0;i<now_rx_len;i++)
-//qDebug("%2x", rx_data[i]);
-//qDebug("end\r\n");
+
+QByteArray extractData(const QByteArray& data) {
+    QByteArray extractedData;
+
+    // 查找包头（0xFF）的位置
+    int startIndex = data.indexOf(char(0xFF));
+    if (startIndex != -1) {
+        // 查找包尾（0xFE）的位置
+        int endIndex = data.indexOf(char(0xFE), startIndex);
+        if (endIndex != -1) {
+            // 提取包头到包尾之间的数据
+            extractedData = data.mid(startIndex + 1, endIndex - startIndex - 1);
+        }
+    }
+
+    return extractedData;
+}
+
+int test() {
+    QByteArray dataStream;
+    // 假设这是你的数据流，其中包含多个数据包
+    dataStream.append(QByteArray::fromHex("FF112233445566FE"));
+    dataStream.append(QByteArray::fromHex("FFAABBCCDDEEFFFE"));
+
+    while (!dataStream.isEmpty()) {
+        QByteArray extractedData = extractData(dataStream);
+        if (!extractedData.isEmpty()) {
+            qDebug() << "Extracted Data: " << extractedData.toHex();
+        }
+
+        // 从数据流中移除已提取的数据包
+        int endIndex = dataStream.indexOf(char(0xFE));
+        if (endIndex != -1) {
+            dataStream.remove(0, endIndex + 1);
+        } else {
+            // 如果没有找到包尾，说明剩余数据无效，清空数据流
+            dataStream.clear();
+        }
+    }
+
+    return 0;
+}
+
 
 void Widget::readData()
 {
-    static QByteArray data ;//= m_serial->readAll();
+    QByteArray data ;
+    static QByteArray user_data;
+
+    QString Dis_data;
+    QString temp;
 
     data=m_serial->readAll();
-//    data.append(m_serial->readAll());
-//    ui->label_2->setText(QString(data));
+    static QByteArray dataStream;
+    // 假设这是你的数据流，其中包含多个数据包
+    dataStream.append(data);
 
- //   ui->textBrowser->setMarkdown(data);
+    if(dataStream.size()>=64){
 
-    for(int i=0;i<data.length();i++){
-        qDebug("%x", data[i]);
+    while (!dataStream.isEmpty()) {
+        QByteArray extractedData = extractData(dataStream);
+        if (!extractedData.isEmpty()) {
+            qDebug() << "Extracted Data: " << extractedData.toHex();
+            for(int i=0;i<extractedData.length();i++){
+                 temp = QString("%1 ").arg((unsigned char)extractedData[i], 0, 16);
+                 Dis_data.append(temp);
+            }
+            ui->textBrowser->append("---------------");
+            ui->textBrowser->append(Dis_data);
+            ui->textBrowser->append("---------------");
+            Dis_data.clear();
+
+        }
+        // 从数据流中移除已提取的数据包
+        int endIndex = dataStream.indexOf(char(0xFE));
+        if (endIndex != -1) {
+            dataStream.remove(0, endIndex + 1);
+        } else {
+            // 如果没有找到包尾，说明剩余数据无效，清空数据流
+            dataStream.clear();
+        }
     }
 
-//    int a=data.length();
-//    char buff[data.size()*2];
-//    char num;
-//    for(int i = 0;i < data.size();i += 2)
-//    {
-//        num = data.mid(i,2).toUInt(nullptr,16);
-//        buff[i/2] = num&0xFF;
+
+    }
+
+
+//    if((unsigned char)data[0]==0xFF){
+//       read_flag=1;
+//    }
+//    else if((unsigned char)data[0]==0xFE){
+//       read_flag=0;
+//       user_data.append(data);
+//       for(int i=0;i<user_data.length();i++){
+//           temp = QString("%1 ").arg((unsigned char)user_data[i], 0, 16);
+//           Dis_data.append(temp);
+//       }
+//       user_data.clear();
+//    }
+//    if(read_flag){
+//        user_data.append(data);
 //    }
 
+//    for(int i=0;i<data.length();i++){
+//        temp = QString("%1 ").arg((unsigned char)data[i], 0, 16);
+//        Dis_data.append(temp);
+//    }
+//    ui->textBrowser->append("---------------");
+//    ui->textBrowser->append(Dis_data);
+//    for(int i=0;i<data.length();i++){
+//        qDebug("%x", data[i]);
+//    }
 }
 
 void Widget::onTimeOut()
@@ -468,28 +522,6 @@ void Widget::on_pushButton_5_released()
 void Widget::on_comboBox_2_textActivated(const QString &arg1)
 {
     QString dis=arg1;
-    //QDebug("%s",dis);
-    //ui->tabWidget->setCurrentIndex(0);
-//    if(!dis.compare(("碳钢100%二氧化碳"))){
-//        ui->stackedWidget->setCurrentWidget(ui->page_1);
-//        direct_mode_flag=0x61;
-//    }
-//    else if(!dis.compare(("碳钢25%二氧化碳"))){
-//        ui->stackedWidget->setCurrentWidget(ui->page_2);
-//        direct_mode_flag=0x62;
-//    }
-//    else if(!dis.compare(("恒压"))){
-//        ui->stackedWidget->setCurrentWidget(ui->page_3);
-//        direct_mode_flag=0x63;
-//    }
-//    else if(!dis.compare(("无气药芯"))){
-//        ui->stackedWidget->setCurrentWidget(ui->page_4);
-//        direct_mode_flag=0x64;
-//    }
-//    else if(!dis.compare("拉丝枪")){
-//        ui->stackedWidget->setCurrentWidget(ui->page_5);
-//        direct_mode_flag=0x65;
-//    }
 }
 
 
@@ -506,42 +538,6 @@ void Widget::on_comboBox_5_textActivated(const QString &arg1)
         }
 
             updata_display();
-}
-
-
-void Widget::on_comboBox_6_textActivated(const QString &arg1)
-{
-//    QString dis=arg1;
-//    if(!dis.compare(("0.8"))){
-//        d_flag=0X61;
-//        ui->doubleSpinBox_18->setMaximum(17.5);
-//    }
-//    else if(!dis.compare(("0.9"))){
-//        d_flag=0X62;
-//        ui->doubleSpinBox_18->setMaximum(14.5);
-//    }
-//    else if(!dis.compare(("1.0"))){
-//        d_flag=0X63;
-//        ui->doubleSpinBox_18->setMaximum(12.8);
-//    }
-
-//    int temp=(int)(speed*10-10);
-
-//    switch(d_flag){
-//      case 0x61:   //0.8
-//        set_a=data_08[temp][0];
-//        set_v=data_08[temp][1]*0.1+5;    //数据采集回来是微调-5模式下采集，这里加5恢复
-//        break;
-//    case 0x62:    //0.9
-//        set_a=data_09[temp][0];
-//        set_v=data_09[temp][1]*0.1+5;
-//        break;
-//    case 0x63:    //1.0
-//        set_a=data_10[temp][0];
-//        set_v=data_10[temp][1]*0.1+5;
-//        break;
-//    }
-//       updata_display();
 }
 
 
@@ -633,4 +629,37 @@ void Widget::on_doubleSpinBox_4_valueChanged(double arg1)
 }
 
 
+
+//按键选择模式切换
+void Widget::on_pushButton_2_clicked()
+{   //直流
+    ui->stackedWidget->setCurrentIndex(0);
+}
+void Widget::on_pushButton_3_clicked()
+{
+    //单脉冲
+    ui->stackedWidget->setCurrentIndex(1);
+}
+void Widget::on_pushButton_4_clicked()
+{
+    //双脉冲
+    ui->stackedWidget->setCurrentIndex(2);
+}
+void Widget::on_pushButton_5_clicked()
+{
+    //手工焊
+    ui->stackedWidget->setCurrentIndex(3);
+}
+void Widget::on_pushButton_6_clicked()
+{
+//亚弧焊
+    ui->stackedWidget->setCurrentIndex(4);
+}
+
+
+void Widget::on_pushButton_7_clicked()
+{
+   ui->label_4->setText("0");
+   ui->textBrowser->clear();
+}
 
