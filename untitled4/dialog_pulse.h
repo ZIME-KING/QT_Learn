@@ -15,9 +15,8 @@ public:
     explicit Dialog_pulse(QWidget *parent = nullptr);
     ~Dialog_pulse();
 private slots:
-    void on_comboBox_activated(int index);
 
-    void on_comboBox_2_activated(int index);
+   // void on_comboBox_2_activated(int index);
 
     void on_doubleSpinBox_valueChanged(double arg1);
 

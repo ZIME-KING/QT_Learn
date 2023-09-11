@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'widget.ui'
 **
-** Created by: Qt User Interface Compiler version 6.2.2
+** Created by: Qt User Interface Compiler version 6.2.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -41,6 +41,7 @@ public:
     QLabel *label_3;
     QLabel *label_4;
     QPushButton *pushButton_7;
+    QLabel *label_5;
 
     void setupUi(QWidget *Widget)
     {
@@ -104,6 +105,9 @@ public:
         pushButton_7 = new QPushButton(Widget);
         pushButton_7->setObjectName(QString::fromUtf8("pushButton_7"));
         pushButton_7->setGeometry(QRect(180, 440, 75, 24));
+        label_5 = new QLabel(Widget);
+        label_5->setObjectName(QString::fromUtf8("label_5"));
+        label_5->setGeometry(QRect(70, 190, 53, 16));
 
         retranslateUi(Widget);
 
@@ -125,6 +129,7 @@ public:
         label_3->setText(QCoreApplication::translate("Widget", "\350\256\241\346\225\260", nullptr));
         label_4->setText(QCoreApplication::translate("Widget", "0", nullptr));
         pushButton_7->setText(QCoreApplication::translate("Widget", "\346\270\205\347\251\272", nullptr));
+        label_5->setText(QCoreApplication::translate("Widget", "10", nullptr));
     } // retranslateUi
 
 };

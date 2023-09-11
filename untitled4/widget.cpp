@@ -48,7 +48,7 @@ Widget::Widget(QWidget *parent)
     tim->setSingleShot(true);
 
     tim1 = new QTimer(this);
-    tim1->setInterval(100);
+    tim1->setInterval(500);
  //   tim1->start();
 
     connect(tim,SIGNAL(timeout()),this,SLOT(onTimeOut()));
@@ -267,7 +267,7 @@ void Widget::openSerialPort()
 
     if (m_serial->open(QIODevice::ReadWrite)) {
         ui->label->setText(QString("Connected to %1 : %2, %3, %4, %5, %6")
-                           .arg(ui->comboBox->currentText()).arg(QSerialPort::Baud19200).arg(QSerialPort::Data8)
+                           .arg(ui->comboBox->currentText()).arg(QSerialPort::Baud9600).arg(QSerialPort::Data8)
                            .arg(QSerialPort::NoParity).arg(QSerialPort::OneStop).arg(QSerialPort::NoFlowControl));
     } else {
         QMessageBox::critical(this, tr("Error"), m_serial->errorString());
@@ -370,6 +370,10 @@ void Widget::readData()
                  temp = QString("%1 ").arg((unsigned char)extractedData[i], 0, 16);
                  Dis_data.append(temp);
             }
+
+            int V=((dataStream[2]-97)*16+(dataStream[3]-97));
+
+            ui->label_5->setText(QString("%1").arg((int)V,0,10));
             ui->textBrowser->append("---------------");
             ui->textBrowser->append(Dis_data);
             ui->textBrowser->append("---------------");

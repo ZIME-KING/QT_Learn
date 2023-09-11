@@ -5,11 +5,37 @@
 #include "set_code.h"
 
 
-#define max_speed_08     125          //10~175
-#define max_speed_09     100          //10~145
-#define max_speed_10     70           //10~128
+#define max_speed_08     125
+#define max_speed_09     100
+#define max_speed_10     70
 
-#include "set_code.h"
+#define m0_max_speed_08        175
+#define m0_min_speed_08        10
+#define m0_max_voltage_08      248
+#define m0_min_voltage_08      95
+#define m0_max_dis_current_08     42
+#define m0_min_dis_current_08     270
+#define m0_max_unknown_data_08     2
+#define m0_min_unknown_data_08     35
+
+#define m0_voltage(x)      ((x-m0_min_speed_08)*(m0_max_voltage_08-m0_min_voltage_08)/(m0_max_speed_08-m0_min_speed_08)+m0_min_voltage_08)
+#define m0_dis_current(x)  ((x-m0_min_speed_08)*(m0_max_dis_current_08-m0_min_dis_current_08)/(m0_max_speed_08-m0_min_speed_08)+m0_min_dis_current_08)
+#define m0_unknown_data(x) ((x-m0_min_speed_08)*(m0_max_unknown_data-m0_min_unknown_data_08)/(m0_max_speed_08-m0_min_speed_08)+m0_min_unknown_data_08)
+
+
+
+#define m1_max_speed_08        175
+#define m1_min_speed_08        10
+#define m1_max_voltage_08      248
+#define m1_min_voltage_08      95
+#define m1_max_dis_current_08     42
+#define m1_min_dis_current_08     270
+#define m1_max_unknown_data_08     2
+#define m1_min_unknown_data_08     35
+
+#define m1_voltage(x)      ((x-m1_min_speed_08)*(m1_max_voltage_08-m1_min_voltage_08)/(m1_max_speed_08-m1_min_speed_08)+m1_min_voltage_08)
+#define m1_dis_current(x)  ((x-m1_min_speed_08)*(m1_max_dis_current_08-m1_min_dis_current_08)/(m1_max_speed_08-m1_min_speed_08)+m1_min_dis_current_08)
+#define m1_unknown_data(x) ((x-m1_min_speed_08)*(m1_max_unknown_data-m1_min_unknown_data_08)/(m1_max_speed_08-m1_min_speed_08)+m1_min_unknown_data_08)
 
 
 int input_direct_mode_flag; // 模式标记

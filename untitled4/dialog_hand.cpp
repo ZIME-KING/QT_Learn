@@ -53,16 +53,28 @@ void Dialog_hand:: updata(){
    set_data_hand[6]= (unsigned int)(input_data2) % 16 + 97;
 
    int check_data;
-   check_data =  (set_data_hand[1] - 97) * 16 + set_data_hand[2] - 97;
+
+   check_data = (set_data_hand[1] - 97) * 16 + set_data_hand[2] - 97;
    check_data += (set_data_hand[3] - 97) * 16 + set_data_hand[4] - 97;
    check_data += (set_data_hand[5] - 97) * 16 + set_data_hand[6] - 97;
+   check_data += (set_data_hand[16] - 97);
+   check_data += (set_data_hand[17] - 97) * 16 + set_data_hand[18] - 97;
+   check_data += (set_data_hand[20] - 97);
+   check_data += (set_data_hand[22] - 97);
+   check_data += (set_data_hand[24] - 97);
+   check_data += (set_data_hand[27] - 97) * 16 + set_data_hand[28] - 97;
+   check_data += (set_data_hand[30] - 97);
+   check_data += (set_data_hand[32] - 97);
+   check_data += (set_data_hand[34] - 97);
+   check_data += (set_data_hand[53] - 97) * 16 + set_data_hand[54] - 97;
+   check_data += (set_data_hand[55] - 97) * 16 + set_data_hand[56] - 97;
    check_data += input_data3;
 
    //check_data += (set_data[16] - 97);
    //QString dis_tmp;
    qDebug("check_data:%d",check_data);
-   set_data_hand[63] = ((unsigned char)(check_data + 209)) / 16 + 97;
-   set_data_hand[64] = ((unsigned char)(check_data + 209)) % 16 + 97;
+   set_data_hand[63] = ((unsigned char)(check_data + 121)) / 16 + 97;
+   set_data_hand[64] = ((unsigned char)(check_data + 121)) % 16 + 97;
    set_data_hand[65] = 0xFE;
 
 

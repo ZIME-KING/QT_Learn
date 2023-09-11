@@ -39,13 +39,35 @@ void Dialog_argon_protected_welding::on_spinBox_2_valueChanged(int arg1)
     set_data[1] = (unsigned char)(set_a) / 16 + 97; // 高位0x61，0x61为0
     set_data[2] = (unsigned char)(set_a) % 16 + 97; //
 
+//    set_data[3] = (unsigned char)(set_a) / 16 + 97; // 高位0x61，0x61为0
+//    set_data[4] = (unsigned char)(set_a) % 16 + 97; //
+
+
     int check_data;
     check_data = (set_data[1] - 97) * 16 + set_data[2] - 97;
+    check_data += (set_data[3] - 97) * 16 + set_data[4] - 97;
+    check_data += (set_data[5] - 97) * 16 + set_data[6] - 97;
+    check_data += (set_data[16] - 97);
+    check_data += (set_data[17] - 97) * 16 + set_data[18] - 97;
+    check_data += (set_data[20] - 97);
+    check_data += (set_data[22] - 97);
+    check_data += (set_data[24] - 97);
+    check_data += (set_data[27] - 97) * 16 + set_data[28] - 97;
+    check_data += (set_data[30] - 97);
+    check_data += (set_data[32] - 97);
+    check_data += (set_data[34] - 97);
+    check_data += (set_data[53] - 97) * 16 + set_data[54] - 97;
+    check_data += (set_data[55] - 97) * 16 + set_data[56] - 97;
+
     //check_data += (set_data[16] - 97);
     //QString dis_tmp;
     qDebug("check_data:%d",check_data);
-    set_data[63] = ((unsigned char)(check_data + 215)) / 16 + 97;
-    set_data[64] = ((unsigned char)(check_data + 215)) % 16 + 97;
+    set_data[63] = ((unsigned char)(check_data + 121)) / 16 + 97;
+    set_data[64] = ((unsigned char)(check_data + 121)) % 16 + 97;
+
+
+
+
     set_data[65] = 0xFE;
 
     QString dis_tmp;
